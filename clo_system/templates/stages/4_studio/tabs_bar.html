@@ -1,0 +1,29 @@
+<!-- THE 4 EDITING SUB-TABS (SPEC, CHAPTERS, CLOS, BLUEPRINT) -->
+<div id="studio-edit-tabs-bar" class="flex space-x-2 bg-slate-200/80 p-1.5 rounded-2xl border border-slate-300 text-sm font-bold no-print">
+  <!-- TAB 1: SPEC -->
+  <button onclick="CourseStudioComponent.switchTab('spec')" id="tab-btn-spec" class="flex-1 py-2.5 rounded-xl tab-active transition flex items-center justify-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+    <span>1. Course Spec</span>
+  </button>
+
+  <!-- TAB 2: CHAPTERS -->
+  <button onclick="CourseStudioComponent.switchTab('chapters')" id="tab-btn-chapters" class="flex-1 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition flex items-center justify-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+    <span>2. Chapters</span>
+    <span id="studio-chapter-count-pill" class="bg-indigo-500/20 text-indigo-700 text-xs px-2 py-0.5 rounded-full font-mono font-bold">6</span>
+  </button>
+
+  <!-- TAB 3: CLO STUDIO -->
+  <button onclick="CourseStudioComponent.switchTab('clos')" id="tab-btn-clos" class="flex-1 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition flex items-center justify-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+    <span>3. CLO Studio</span>
+    <span id="studio-clo-count-pill" class="bg-emerald-500/20 text-emerald-700 text-xs px-2 py-0.5 rounded-full font-mono font-bold">6</span>
+  </button>
+
+  <!-- TAB 4: ASSESSMENT BLUEPRINT -->
+  <button onclick="CourseStudioComponent.switchTab('blueprint')" id="tab-btn-blueprint" class="flex-1 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition flex items-center justify-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
+    <span>4. Blueprint</span>
+  </button>
+</div>
+

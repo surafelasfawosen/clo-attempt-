@@ -1,0 +1,296 @@
+<!-- ========================================================================= -->
+<!-- SUB-WINDOW 4: OFFICIAL CLO ATTAINMENT REPORT & ANALYTICS DASHBOARD      -->
+<!-- Professional analytics engine — driven by real student result data       -->
+<!-- ========================================================================= -->
+<section id="t-tab-report" class="subwindow-view space-y-5 hidden">
+  <div class="subwindow-card p-5 space-y-7 print:border-none print:p-2">
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- REPORT HEADER TOOLBAR                                               -->
+    <!-- ------------------------------------------------------------------ -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between pb-5 border-b border-slate-200 gap-4 no-print">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-700 text-white flex items-center justify-center font-black text-sm shadow-md shadow-blue-500/20">
+          DBU
+        </div>
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-wider text-blue-700">Official Institutional OBE Report</span>
+          <h2 class="text-xl font-black text-slate-900 tracking-tight">Course Learning Outcome (CLO) Attainment Report</h2>
+          <div class="text-xs text-slate-500 mt-0.5">
+            Standard: <strong>CLO Attainment Template Dec 2026 V-2.xlsx</strong> &bull; Auto-aggregated from live student data
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="TeacherPortal.exportExcel()" class="px-3.5 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700 transition flex items-center gap-1.5 shadow-sm">
+          <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
+          <span>Export Full Report (.csv)</span>
+        </button>
+        <button onclick="window.print()" class="px-3.5 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700 transition flex items-center gap-1.5 shadow-sm">
+          <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+          <span>Print Official Dossier</span>
+        </button>
+        <button onclick="TeacherPortal.dispatchReport()" id="teacher-dispatch-btn" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-xs font-bold text-white shadow-md shadow-blue-600/20 transition flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+          <span>Dispatch to Dept Head &amp; Dean</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- FORMAL INSTITUTIONAL HEADER BOX                                     -->
+    <!-- ------------------------------------------------------------------ -->
+    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-4">
+      <div class="text-center pb-3 border-b border-slate-200">
+        <div class="font-bold uppercase tracking-widest text-slate-500">Debre Berhan University</div>
+        <div class="text-base font-black text-slate-800" id="rep-box-dept">College of Computing &bull; Department of Data Science</div>
+        <div class="text-xs font-bold text-blue-700 mt-0.5">Course Learning Outcome (CLO) Attainment Calculation &bull; Accreditation Format</div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-1">
+        <div><span class="text-slate-400 font-medium">Course Code:</span> <strong id="rep-course-code" class="block font-mono text-slate-900 font-bold mt-0.5">Stat4092</strong></div>
+        <div><span class="text-slate-400 font-medium">Course Title:</span> <strong id="rep-course-title" class="block text-slate-900 font-bold mt-0.5">Operations Research and Optimization</strong></div>
+        <div><span class="text-slate-400 font-medium">Course Instructor:</span> <strong id="rep-instructor-name" class="block text-slate-900 font-bold mt-0.5">Dr. Adimias W (PhD)</strong></div>
+        <div><span class="text-slate-400 font-medium">Credit Hr / ECTS:</span> <strong id="rep-credit-hours" class="block font-mono text-slate-900 font-bold mt-0.5">3 Cr. / 7 ECTS</strong></div>
+        <div><span class="text-slate-400 font-medium">Academic Year:</span> <strong class="block text-slate-900 font-bold mt-0.5">2025/2026</strong></div>
+        <div><span class="text-slate-400 font-medium">Year / Semester:</span> <strong id="rep-year-sem" class="block text-slate-900 font-bold mt-0.5">Year 4 / Semester II</strong></div>
+        <div><span class="text-slate-400 font-medium">Total Cohort:</span> <strong id="rep-student-count" class="block font-mono text-blue-700 font-bold mt-0.5">24 Students</strong></div>
+        <div><span class="text-slate-400 font-medium">Date Prepared:</span> <strong id="rep-date-prepared" class="block font-mono text-slate-900 font-bold mt-0.5">2026-11-19</strong></div>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- KPI SUMMARY CARDS (Auto-computed from student data)                 -->
+    <!-- ------------------------------------------------------------------ -->
+    <div>
+      <h3 class="text-xs font-bold uppercase tracking-wide text-slate-700 mb-3 flex items-center gap-2">
+        <span class="w-5 h-5 rounded bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-[11px]">K</span>
+        <span>Key Performance Indicators</span>
+        <span class="text-[10px] font-normal text-slate-400 font-sans">Auto-computed from submitted student results</span>
+      </h3>
+      <div id="rep-kpi-row" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        <!-- Dynamically populated by renderReport() -->
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- ANALYTICS CHARTS ROW 1: Attainment + Grade Distribution + Radar    -->
+    <!-- ------------------------------------------------------------------ -->
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-xs font-bold uppercase tracking-wide text-slate-700 flex items-center gap-2">
+          <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-[11px]">V</span>
+          <span>Visual Analytics Dashboard</span>
+          <span class="text-[10px] text-blue-600 font-normal font-sans">(Directly replicated from Dec 2026 Excel Dashboard)</span>
+        </h3>
+        <span class="text-xs font-mono font-bold text-slate-500 bg-red-50 border border-red-200 text-red-700 px-2 py-0.5 rounded">Accreditation Threshold: 65.0%</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Chart 1: CLO Attainment Rate Bar -->
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">1. Attainment Per CLO (%)</h4>
+            <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Excel Chart 2</span>
+          </div>
+          <div class="h-52 relative"><canvas id="chart-attainment-clo"></canvas></div>
+          <p id="chart1-caption" class="text-[11px] text-slate-500 leading-snug">Cohort attainment per CLO vs. 65% accreditation threshold.</p>
+        </div>
+
+        <!-- Chart 2: Grade Distribution Histogram -->
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">2. Grade Distribution</h4>
+            <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Live Data</span>
+          </div>
+          <div class="h-52 relative"><canvas id="chart-grade-distribution"></canvas></div>
+          <p id="chart2-caption" class="text-[11px] text-slate-500 leading-snug">Distribution of final grades across the cohort by letter grade band.</p>
+        </div>
+
+        <!-- Chart 3: Radar spread -->
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">3. Assessment Radar Spread</h4>
+            <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Excel Chart 3</span>
+          </div>
+          <div class="h-52 relative"><canvas id="chart-radar-spread"></canvas></div>
+          <p id="chart3-caption" class="text-[11px] text-slate-500 leading-snug">Multi-axial radar comparing cohort performance across assessment types.</p>
+        </div>
+      </div>
+
+      <!-- Charts Row 2: Mark Distribution + Score Scatter -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
+        <!-- Chart 4: CLO Weight Stacked Bar -->
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">4. CLO Mark Distribution by Assessment</h4>
+            <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Excel Chart 1</span>
+          </div>
+          <div class="h-52 relative"><canvas id="chart-mark-distribution"></canvas></div>
+          <p class="text-[11px] text-slate-500 leading-snug">Stacked mark allocation per CLO across Mid, Lab/Project, and Final Exam.</p>
+        </div>
+
+        <!-- Chart 5: Total Mark Scatter (Section A vs B) -->
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">5. Student Score Distribution (Section Comparison)</h4>
+            <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-violet-50 text-violet-700 border border-violet-200">Live Data</span>
+          </div>
+          <div class="h-52 relative"><canvas id="chart-score-scatter"></canvas></div>
+          <p id="chart5-caption" class="text-[11px] text-slate-500 leading-snug">Student total marks plotted by section to identify performance clusters.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- AI-GENERATED NARRATIVE ANALYSIS (Humanized from Real Data)          -->
+    <!-- ------------------------------------------------------------------ -->
+    <div>
+      <h3 class="text-xs font-bold uppercase tracking-wide text-slate-700 mb-3 flex items-center gap-2">
+        <span class="w-5 h-5 rounded bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-[11px]">N</span>
+        <span>Analytical Narrative &amp; Improvement Recommendations</span>
+        <span class="text-[10px] font-normal text-slate-400 font-sans">Auto-generated from student result statistics</span>
+      </h3>
+      <div id="rep-narratives" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <!-- Dynamically populated by renderReport() -->
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SECTION A: ASSESSMENT METHODS TABLE                                 -->
+    <!-- ------------------------------------------------------------------ -->
+    <div class="space-y-3">
+      <h3 class="text-xs font-bold uppercase tracking-wide text-slate-800 flex items-center gap-2">
+        <span class="w-5 h-5 rounded bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-[11px]">A</span>
+        <span>Assessment Methods &amp; Weight Distribution</span>
+      </h3>
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+              <th class="p-3">Assessment ID</th>
+              <th class="p-3">Assessment Type</th>
+              <th class="p-3">CLO Mapped</th>
+              <th class="p-3 text-center">Weight (%)</th>
+              <th class="p-3 text-center">Max Marks</th>
+              <th class="p-3">Accreditation Remark</th>
+            </tr>
+          </thead>
+          <tbody id="rep-asst-methods-tbody" class="divide-y divide-slate-200">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SECTION B: FULL STUDENT RESULTS TABLE                               -->
+    <!-- ------------------------------------------------------------------ -->
+    <div class="space-y-3">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <h3 class="text-xs font-bold uppercase tracking-wide text-slate-800 flex items-center gap-2">
+          <span class="w-5 h-5 rounded bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-[11px]">B</span>
+          <span>Student Result &amp; CLO Attainment Detail</span>
+        </h3>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded border border-emerald-200">Zero Manual Math &bull; Auto-calculated</span>
+          <select id="rep-section-filter" onchange="TeacherPortal.onReportSectionFilter(this.value)" class="text-xs border border-slate-300 rounded-lg px-2 py-1 font-semibold text-slate-700 bg-white focus:ring-1 focus:ring-blue-500 focus:outline-none">
+            <option value="ALL">All Sections</option>
+            <option value="Section A">Section A Only</option>
+            <option value="Section B">Section B Only</option>
+          </select>
+        </div>
+      </div>
+      <div class="overflow-x-auto rounded-xl border border-slate-200 max-h-96 custom-scrollbar">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead class="sticky top-0 bg-slate-100 text-slate-700 font-bold border-b border-slate-200 z-10">
+            <tr>
+              <th class="p-3">#</th>
+              <th class="p-3">Student ID</th>
+              <th class="p-3">Student Name</th>
+              <th class="p-3">Section</th>
+              <th class="p-3 text-center">Mid</th>
+              <th class="p-3 text-center">Lab</th>
+              <th class="p-3 text-center">Project</th>
+              <th class="p-3 text-center">Final</th>
+              <th class="p-3 text-center">Total</th>
+              <th class="p-3 text-center">Grade</th>
+              <th class="p-3 text-center">CLO1 %</th>
+              <th class="p-3 text-center">CLO2 %</th>
+              <th class="p-3 text-center">CLO3 %</th>
+            </tr>
+          </thead>
+          <tbody id="rep-student-attain-tbody" class="divide-y divide-slate-200">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SECTION C: CLO ATTAINMENT SUMMARY TABLE (Accreditation Standard)    -->
+    <!-- ------------------------------------------------------------------ -->
+    <div class="space-y-3">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <h3 class="text-xs font-bold uppercase tracking-wide text-slate-800 flex items-center gap-2">
+          <span class="w-5 h-5 rounded bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-[11px]">C</span>
+          <span>CLO Attainment Summary &mdash; Accreditation Standard Formulas</span>
+        </h3>
+        <div class="text-xs text-slate-500 font-semibold">
+          Mark Threshold: <strong class="text-blue-700">60.0%</strong> &bull; Attainment Threshold: <strong class="text-blue-700">65.0%</strong>
+        </div>
+      </div>
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+              <th class="p-3">CLO</th>
+              <th class="p-3">CLO Description</th>
+              <th class="p-3 text-center">Mean %</th>
+              <th class="p-3 text-center">Median %</th>
+              <th class="p-3 text-center">Min %</th>
+              <th class="p-3 text-center">Max %</th>
+              <th class="p-3 text-center">Std Dev</th>
+              <th class="p-3 text-center">Mark Thresh</th>
+              <th class="p-3 text-center">Attain Thresh</th>
+              <th class="p-3 text-center">Students Above</th>
+              <th class="p-3 text-center">Attainment Rate</th>
+              <th class="p-3 text-center">Target Met</th>
+            </tr>
+          </thead>
+          <tbody id="rep-summary-tbody" class="divide-y divide-slate-200">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SECTION D: OFFICIAL AUDIT VALIDATION CHECKLIST                      -->
+    <!-- ------------------------------------------------------------------ -->
+    <div class="space-y-3">
+      <h3 class="text-xs font-bold uppercase tracking-wide text-slate-800 flex items-center gap-2">
+        <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-[11px]">D</span>
+        <span>Validation Checklist &amp; Audit Trail [Accreditation Directorate]</span>
+      </h3>
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+              <th class="p-3">Validation Item</th>
+              <th class="p-3">Verified By</th>
+              <th class="p-3">Verification Date</th>
+              <th class="p-3">Audit Status</th>
+              <th class="p-3">Accreditation Remarks</th>
+            </tr>
+          </thead>
+          <tbody id="rep-audit-tbody" class="divide-y divide-slate-200">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>

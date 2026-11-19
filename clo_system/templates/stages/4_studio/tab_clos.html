@@ -1,0 +1,65 @@
+<!-- TAB 3: CLO STUDIO -->
+<div id="tab-content-clos" class="space-y-5 hidden">
+  
+  <!-- TOP OVERVIEW HEADER -->
+  <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap justify-between items-center gap-3">
+    <div>
+      <h4 class="font-bold text-slate-800 text-sm">Course Learning Outcomes &amp; Accreditation Alignment</h4>
+      <p class="text-xs font-semibold text-slate-500">Map outcomes to Program Learning Outcomes (PLOs), configure assessment methods, and define attainment targets.</p>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <button onclick="CourseStudioComponent.openManagePLOsModal()" class="bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-bold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-xs" title="Add, edit, or manage Program Learning Outcomes (e.g. PLO6, PLO7)">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+        <span>+ Manage PLOs</span>
+      </button>
+
+      <button onclick="CourseStudioComponent.autoFillAssessmentMethodsFromBlueprint()" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs font-bold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-xs" title="Auto-fill assessment method text from Blueprint tasks in Tab 4">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        <span>Auto-Fill from Blueprint</span>
+      </button>
+
+      <button onclick="CourseStudioComponent.addCLO()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+        <span>+ Add CLO Outcome</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE MATRIX: SQC TABLE 4 MATCH -->
+  <div class="bg-white rounded-2xl border-2 border-slate-200 hover:border-emerald-400 transition shadow-sm overflow-hidden">
+    <div class="bg-slate-50 px-5 py-3.5 border-b border-slate-200 flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="bg-emerald-600 text-white font-mono font-black text-xs px-2.5 py-1 rounded-lg tracking-wider uppercase">
+          Table 4 Matrix
+        </span>
+        <h4 class="font-black text-slate-800 text-sm">Mapping CLO to Program Outcomes &amp; Assessment Methods</h4>
+      </div>
+      <span class="text-xs text-slate-500 font-semibold">One-Click PLO Toggles &amp; Assessment Method Editor</span>
+    </div>
+
+    <div class="p-4 overflow-x-auto">
+      <table class="w-full text-left border-collapse text-xs">
+        <thead>
+          <tr id="studio-clo-matrix-headers" class="bg-slate-100 border-b border-slate-300">
+            <!-- Dynamically populated via CourseStudioComponent.renderCLOs() -->
+          </tr>
+        </thead>
+        <tbody id="studio-clo-matrix-rows">
+          <!-- Dynamically populated via CourseStudioComponent.renderCLOs() -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CLO OUTCOME SPECIFICATIONS LIST -->
+  <div class="space-y-4">
+    <div class="border-b border-slate-200 pb-2 flex justify-between items-center">
+      <h4 class="text-xs font-black uppercase tracking-wider text-slate-600">Detailed Outcome Statements &amp; Bloom's Taxonomy</h4>
+      <span class="text-xs text-slate-500 font-medium">Click statement or thresholds to edit</span>
+    </div>
+    <div id="studio-clos-list" class="space-y-4">
+      <!-- Dynamically populated via CourseStudioComponent.renderCLOs() -->
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<!-- Top Global Header / Dynamic Breadcrumb & User Session Bar -->
+<header class="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between flex-shrink-0 z-20 no-print gap-4">
+  <div id="breadcrumb-bar" class="flex items-center gap-2 text-sm font-semibold text-slate-600 min-w-0 overflow-hidden whitespace-nowrap">
+    <!-- Rendered dynamically via Sidebar.updateBreadcrumb() -->
+  </div>
+
+  <div id="header-actions" class="flex items-center gap-3 flex-shrink-0 whitespace-nowrap">
+    <!-- Active Role Pill -->
+    <span class="inline-flex items-center px-2.5 py-1 rounded-xl text-[11px] font-black uppercase tracking-wider bg-purple-50 text-purple-700 border border-purple-200 flex-shrink-0">
+      Super Admin
+    </span>
+
+    <!-- Super Admin Identity Display -->
+    <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 flex-shrink-0 text-xs">
+      <span class="font-bold text-slate-800">Academic VP / QA</span>
+      <span class="font-mono text-slate-400 text-[10px]">DBU-ADMIN-001</span>
+    </div>
+
+    <!-- Hidden compatibility select for automated test suites -->
+    <select id="admin-account-select" onchange="TeacherPortal.onRoleAccountSwitch(this.value)" class="hidden">
+      <option value="DBU-ADMIN-001" selected>Academic VP (Super Admin)</option>
+      <option value="DBU-FAC-2015">Dr. Adimias W (Teacher)</option>
+      <option value="DBU-HEAD-DASC">Prof. Yared M (Dept Head)</option>
+      <option value="DBU-DEAN-COMP">Dr. Mengistu A (College Dean)</option>
+    </select>
+
+    <!-- Sign Out Button -->
+    <button type="button" onclick="TeacherPortal.logout()"
+      class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700 shadow-2xs transition cursor-pointer flex-shrink-0" title="Sign out of university session">
+      <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+      <span>Sign Out</span>
+    </button>
+  </div>
+</header>

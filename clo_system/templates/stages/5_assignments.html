@@ -1,0 +1,816 @@
+<!-- STAGE 5: COURSE ASSIGNMENTS (TEACHER & STUDENT COHORT / FRESHMAN & DEPARTMENT ROSTERS) -->
+<section id="stage-assignments" class="max-w-6xl mx-auto space-y-6 hidden">
+
+  <!-- TOP HEADER -->
+  <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div class="space-y-1">
+      <div class="flex items-center gap-2">
+        <span id="assign-header-badge" class="bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-xl border border-blue-200 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+          Course &amp; Cohort Assignments
+        </span>
+      </div>
+      <h2 id="assign-header-title" class="text-xl font-extrabold text-slate-900 tracking-tight">
+        Teacher &amp; Student Cohort Assignment
+      </h2>
+      <p id="assign-header-desc" class="text-xs font-medium text-slate-500">
+        Assign instructors and student rosters by academic stream, section, and department.
+      </p>
+    </div>
+
+    <!-- Quick Refresh Button -->
+    <div class="flex items-center gap-2">
+      <button onclick="AssignmentsComponent.refresh()" class="bg-slate-50 hover:bg-slate-100 text-slate-600 text-xs font-bold px-3 py-2 rounded-xl border border-slate-200 transition flex items-center gap-1.5 shadow-sm">
+        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+        </svg>
+        <span>Refresh Roster</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- FRESHMAN BATCH ROSTER UPLOAD (Clean & Simple - Placed FIRST) -->
+  <div id="assign-freshman-bar" class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-5 rounded-3xl shadow-sm space-y-3 hidden">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-blue-500/20 text-blue-300 flex items-center justify-center font-black text-sm border border-blue-400/30">
+          <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h4 class="font-extrabold text-sm text-white flex items-center gap-2">
+            <span>Freshman Admissions Intake &amp; Student Ingestion</span>
+            <span class="bg-blue-500/30 text-blue-200 text-[10px] font-mono px-2 py-0.5 rounded border border-blue-400/30">Batch 2015 &bull; Admissions Intake (Sem I)</span>
+          </h4>
+          <p class="text-xs text-blue-200/80">
+            Freshman Admissions: Upload student list (ID, Full Name, Sex, Stream, Section). Then pass the official list to specific degree colleges for Semester II.
+          </p>
+        </div>
+      </div>
+
+      <!-- Simple Upload / Paste / Pass to College Buttons -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <input type="file" id="assign-fresh-file-input" accept=".xlsx,.xls,.csv,.txt" class="hidden" onchange="AssignmentsComponent.handleFileUpload(event, 'freshman')">
+        <button onclick="document.getElementById('assign-fresh-file-input').click()"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shadow-blue-500/30">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+          <span>Upload Excel / CSV</span>
+        </button>
+
+        <button onclick="AssignmentsComponent.openPasteModal('freshman')"
+          class="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 border border-white/20">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+          <span>Paste Text</span>
+        </button>
+
+        <button onclick="AssignmentsComponent.openForwardModal('to_college')"
+          class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shadow-emerald-500/30 border border-emerald-400/40">
+          <svg class="w-4 h-4 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+          <span>Send Student List to College (Sem II) &rarr;</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pipeline Progression Flow Indicator -->
+    <div class="flex items-center gap-2 pt-2 border-t border-white/10 text-[11px] text-blue-200/90 font-medium">
+      <span class="text-white font-bold">Progression Order:</span>
+      <span class="bg-blue-500/20 text-blue-200 font-bold px-2 py-0.5 rounded border border-blue-400/30">1. Freshman Intake</span>
+      <span>&rarr;</span>
+      <span class="text-blue-300">2. Pass List to College (Sem II)</span>
+      <span>&rarr;</span>
+      <span class="text-blue-300">3. College Passes List to Department (Year 2 Constant Batch)</span>
+    </div>
+  </div>
+
+  <!-- COLLEGE COMMON CORE TOOLBAR (Freshman Semester II) -->
+  <div id="assign-college-bar" class="bg-gradient-to-r from-slate-900 via-slate-800 to-blue-950 text-white p-5 rounded-3xl shadow-sm space-y-3 hidden">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-blue-500/20 text-blue-300 flex items-center justify-center font-black text-sm border border-blue-400/30">
+          🏛️
+        </div>
+        <div>
+          <h4 id="assign-college-bar-title" class="font-extrabold text-sm text-white flex items-center gap-2">
+            <span>College Common Core</span>
+            <span class="bg-blue-500/30 text-blue-200 text-[10px] font-mono px-2 py-0.5 rounded border border-blue-400/30">Freshman Semester II</span>
+          </h4>
+          <p id="assign-college-bar-desc" class="text-xs text-slate-300">
+            Freshman students complete College-level Semester II common core courses before being placed into degree departments in Year 2.
+          </p>
+        </div>
+      </div>
+
+      <!-- College Common Actions -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <input type="file" id="assign-college-file-input" accept=".xlsx,.xls,.csv,.txt" class="hidden" onchange="AssignmentsComponent.handleFileUpload(event, 'college')">
+        <button onclick="document.getElementById('assign-college-file-input').click()"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shadow-blue-500/30 border border-blue-400/30"
+          title="Upload official College Placement file (.xlsx, .csv, .txt)">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+          <span>Upload Placement File</span>
+        </button>
+
+        <button onclick="AssignmentsComponent.openPasteModal('college')"
+          class="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-3 py-2 rounded-xl transition flex items-center gap-1.5 border border-white/20">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+          <span>Paste List</span>
+        </button>
+
+        <button onclick="AssignmentsComponent.openForwardModal('to_dept')"
+          class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 border border-emerald-400/40 shadow-xs">
+          <svg class="w-3.5 h-3.5 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+          <span>Send Student List to Department (Year 2+) &rarr;</span>
+        </button>
+
+        <button onclick="AssignmentsComponent.saveCurrentRoster()"
+          class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs px-3 py-2 rounded-xl transition border border-slate-700">
+          &check; Save Roster
+        </button>
+      </div>
+    </div>
+
+    <!-- Intake Source Status Banner -->
+    <div class="flex items-center gap-2 pt-2 border-t border-white/10 text-[11px] text-blue-200">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="font-bold text-white">Incoming Cohort Status:</span>
+      <span>✓ Received Student List from <strong>College of Freshman Studies</strong> &bull; Batch 2015 &bull; Natural Science Cohort (24 Students)</span>
+    </div>
+  </div>
+
+  <!-- DEGREE DEPARTMENT PERMANENT COHORT TOOLBAR (Year 2 to Graduation - NO UPLOAD LIST) -->
+  <div id="assign-dept-bar" class="bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 text-white p-5 rounded-3xl shadow-sm space-y-3 hidden">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center font-black text-sm border border-indigo-400/30">
+          🎓
+        </div>
+        <div>
+          <h4 id="assign-dept-bar-title" class="font-extrabold text-sm text-white flex items-center gap-2">
+            <span>Department Student Roster</span>
+            <span class="bg-indigo-500/30 text-indigo-200 text-[10px] font-mono px-2 py-0.5 rounded border border-indigo-400/30">Permanent Constant Cohort &bull; Batch 2015</span>
+          </h4>
+          <p id="assign-dept-bar-desc" class="text-xs text-slate-300">
+            Constant cohort passed from College Common Core. <strong>No file re-uploading required.</strong> Select and promote students across semesters to monitor continuous CLO attainment through final graduation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Department Constant Cohort Actions (Manual Promotion - NO Upload List) -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <button onclick="AssignmentsComponent.openPromoteModal()"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 border border-indigo-400/40 shadow-xs">
+          <svg class="w-4 h-4 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>Select &amp; Promote to Next Semester &rarr;</span>
+        </button>
+
+        <button onclick="AssignmentsComponent.saveCurrentRoster()"
+          class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs px-3 py-2 rounded-xl transition border border-slate-700">
+          &check; Save Cohort Status
+        </button>
+      </div>
+    </div>
+
+    <!-- Department Permanent Cohort Status Banner -->
+    <div class="flex items-center gap-2 pt-2 border-t border-white/10 text-[11px] text-indigo-200">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <span class="font-bold text-white">Cohort Intake Status:</span>
+      <span>✓ Received from <strong>College of Computing &amp; Technology</strong> &bull; Constant Cohort for <strong>Batch 2015</strong> &bull; Permanent throughout Graduation (Distinguished by Batch)</span>
+    </div>
+  </div>
+
+  <!-- AUTHORITY SELECTORS ROW -->
+  <div id="assign-selectors-row" class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3.5">
+    <!-- 1. College -->
+    <div class="lg:col-span-3">
+      <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1">
+        <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+        </svg>
+        1. College
+      </label>
+      <select id="assignments-college-select" onchange="AssignmentsComponent.onCollegeChange(this.value)"
+        class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-xs font-semibold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        <!-- Rendered dynamically -->
+      </select>
+    </div>
+
+    <!-- 2. Department / Academic Stream (Switches dynamically when College of Freshman Studies is selected) -->
+    <div id="assign-dept-container" class="lg:col-span-3">
+      <label id="assign-middle-label" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1">
+        <svg class="w-3.5 h-3.5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+        </svg>
+        <span id="assign-middle-title">2. Department</span>
+      </label>
+      <select id="assignments-dept-select" onchange="AssignmentsComponent.onDepartmentChange(this.value)"
+        class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-xs font-semibold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        <!-- Rendered dynamically -->
+      </select>
+      <select id="assignments-freshman-stream-select" onchange="AssignmentsComponent.onFreshmanStreamSelect(this.value)"
+        class="w-full bg-blue-50 border border-blue-300 text-blue-900 text-xs font-bold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none hidden">
+        <option value="ALL">All Academic Streams</option>
+        <option value="Natural Science">Natural Science Stream</option>
+        <option value="Social Science">Social Science Stream</option>
+      </select>
+    </div>
+
+    <!-- Academic Year (Placed directly between 2 and 3) -->
+    <div id="assign-year-container" class="lg:col-span-2">
+      <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1">
+        <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        </svg>
+        Year Level
+      </label>
+      <select id="assignments-year-select" onchange="AssignmentsComponent.onYearFilterChange(this.value)"
+        class="w-full bg-amber-50 border border-amber-300 text-amber-900 text-xs font-bold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+        <option value="ALL">All Academic Years</option>
+        <option value="Year 1">First Year (Year 1)</option>
+        <option value="Year 2">Second Year (Year 2)</option>
+        <option value="Year 3">Third Year (Year 3)</option>
+        <option value="Year 4">Fourth Year (Year 4)</option>
+      </select>
+    </div>
+
+    <!-- Semester (Placed directly between 2 and 3) -->
+    <div id="assign-sem-container" class="lg:col-span-1">
+      <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1">
+        <svg class="w-3.5 h-3.5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Semester
+      </label>
+      <select id="assignments-semester-select" onchange="AssignmentsComponent.onSemesterFilterChange(this.value)"
+        class="w-full bg-violet-50 border border-violet-300 text-violet-900 text-xs font-bold rounded-xl px-2.5 py-2.5 focus:ring-2 focus:ring-violet-500 focus:outline-none">
+        <option value="ALL">All</option>
+        <option value="Semester I">Sem I</option>
+        <option value="Semester II">Sem II</option>
+      </select>
+    </div>
+
+    <!-- 3. Course Offering / Freshman Common Course -->
+    <div id="assign-course-container" class="lg:col-span-3">
+      <label id="assign-course-label" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1">
+        <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        </svg>
+        3. Selected Course Offering
+      </label>
+      <select id="assignments-course-select" onchange="AssignmentsComponent.onCourseChange(this.value)"
+        class="w-full bg-blue-50 border border-blue-300 text-blue-900 text-xs font-bold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        <!-- Rendered dynamically with status tags -->
+      </select>
+    </div>
+  </div>
+
+  <!-- SMART COURSE QUICK-SWITCHER & STREAM STATUS STRIP -->
+  <div id="assign-courses-pills-bar" class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
+    <div class="flex items-center gap-2 flex-wrap">
+      <div class="flex items-center gap-1.5 text-xs font-extrabold text-slate-700 uppercase tracking-wider mr-1">
+        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+        <span>Courses Status:</span>
+      </div>
+      <div id="assign-courses-pills-container" class="flex items-center gap-1.5 flex-wrap">
+        <!-- Rendered dynamically with clickable course status chips -->
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2.5 shrink-0">
+      <span id="assign-stream-progress-badge" class="bg-blue-50 text-blue-800 text-xs font-bold px-3 py-1 rounded-xl border border-blue-200">
+        0 of 0 Courses Staffed
+      </span>
+      <button type="button" onclick="AssignmentsComponent.openStreamOverviewModal()"
+        class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-xl transition border border-slate-300 shadow-2xs flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+        <span>View Full Staffing Summary</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- SINGLE UNIFIED COURSE STAFFING WORKBENCH -->
+  <div id="assign-course-detail-container" class="space-y-4">
+    <!-- Course Banner & Meta Header -->
+    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 flex-wrap">
+        <span id="assign-banner-course-code" class="bg-slate-900 text-white font-mono text-xs font-bold px-3 py-1.5 rounded-lg shadow-2xs">
+          EnLa1011
+        </span>
+        <h3 id="assign-banner-course-title" class="font-extrabold text-sm text-slate-900">
+          Communicative English Language Skills I
+        </h3>
+        <span id="assign-banner-stream-badge" class="hidden"></span>
+        <span class="text-slate-300 hidden md:inline">&bull;</span>
+        <span id="assign-banner-placement" class="text-xs text-slate-500 font-medium">
+          Freshman Studies &bull; Semester I
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span id="assign-banner-derived-batch" class="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-200 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          Admissions Intake
+        </span>
+        <span id="assign-staffing-summary-badge" class="bg-blue-50 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-lg border border-blue-200">
+          0 / 0 Sections Staffed
+        </span>
+      </div>
+    </div>
+
+    <!-- Active Course Allocation Summary Strip (Which teacher assigned to which section/students) -->
+    <div id="assign-banner-allocation-summary" class="bg-slate-50 border border-slate-200/80 rounded-xl px-4 py-2.5 text-xs text-slate-700 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
+      <!-- Populated dynamically: Section A (12 std): Dr. Solomon Desta • Section B (12 std): Dr. Solomon Desta -->
+    </div>
+
+    <!-- COURSE SECTION ALLOCATION WORKBENCH -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs p-5 space-y-4">
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+        <div>
+          <h3 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <span>Course Section Staffing</span>
+            <span id="assign-sections-count-pill" class="bg-slate-100 text-slate-700 text-xs font-normal px-2.5 py-0.5 rounded-lg border border-slate-200">
+              0 Sections &bull; 0 Students
+            </span>
+          </h3>
+          <p class="text-xs text-slate-500">
+            Assign instructors across course sections (Section A up to Section F). Type to search teacher name or apply AI best fit.
+          </p>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <button type="button" onclick="AssignmentsComponent.autoAssignBestMatchAll()"
+            class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition shadow-xs flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <span>Auto-Staff All Sections with Best-Fit</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- AI Recommended Match Banner -->
+      <div id="assign-ai-match-card" class="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0 shadow-2xs">
+            AI
+          </div>
+          <div class="space-y-0.5">
+            <div class="text-xs font-extrabold text-blue-950 flex items-center gap-2">
+              <span id="assign-ai-inst-name">Dr. Solomon Desta (PhD)</span>
+              <span id="assign-ai-match-score" class="bg-blue-200/80 text-blue-900 text-[10px] font-mono font-bold px-2 py-0.5 rounded-md">98% Fit</span>
+              <span class="text-blue-600 text-[11px] font-normal">[Suggested Best Fit]</span>
+            </div>
+            <div id="assign-ai-inst-rationale" class="text-[11px] text-blue-700">
+              Primary Competence: Ph.D. in Social Anthropology & Cultural Diversity.
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="AssignmentsComponent.applyAIToSearch()"
+            class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition shadow-2xs">
+            Use This Teacher
+          </button>
+          <button type="button" onclick="AssignmentsComponent.autoAssignBestMatchAll()"
+            class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition shadow-2xs">
+            Staff All Sections
+          </button>
+        </div>
+      </div>
+
+      <!-- Hidden backward-compatibility elements for programmatic search/select -->
+      <div class="hidden">
+        <input type="text" id="assign-teacher-search" autocomplete="off">
+        <div id="assign-teacher-dropdown"></div>
+        <select id="assign-teacher-select"></select>
+        <div id="assign-section-check-pills"></div>
+        <span id="assign-selected-sections-badge"></span>
+      </div>
+
+      <!-- Global Datalist for typing teacher names directly in rows -->
+      <datalist id="assign-teachers-datalist">
+        <!-- Populated dynamically with all faculty members -->
+      </datalist>
+
+      <!-- SECTION ASSIGNMENT MATRIX / TABLE -->
+      <div class="space-y-2 pt-2">
+        <div class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center justify-between">
+          <span>Section Roster &amp; Instructor Allocations</span>
+          <span id="assign-staffing-summary" class="text-slate-500 font-normal normal-case"></span>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-2xs">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-100/70 text-slate-600 font-bold uppercase tracking-wider border-b border-slate-200">
+                <th class="py-2.5 px-3 w-10 text-center">
+                  <input type="checkbox" id="assign-table-select-all" onchange="AssignmentsComponent.selectAllStaffingSections(this.checked)"
+                    class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+                </th>
+                <th class="py-2.5 px-3 w-32">Section</th>
+                <th class="py-2.5 px-3 w-36">Enrolled Cohort</th>
+                <th class="py-2.5 px-4">Assigned Instructor</th>
+                <th class="py-2.5 px-4 text-right">Quick Assign / Edit by Typing</th>
+              </tr>
+            </thead>
+            <tbody id="assign-sections-simple-list" class="divide-y divide-slate-100">
+              <!-- Populated dynamically with rows for actual cohort sections -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE ENROLLED CLASS ROSTER TABLE (Clean, Professional, Minimalist) -->
+  <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="px-5 py-3.5 border-b border-slate-200 bg-slate-50/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 flex-wrap">
+        <span class="font-extrabold text-xs text-slate-800 uppercase tracking-wider">Student Roster</span>
+        <span id="assign-roster-count-badge"
+          class="bg-blue-50 text-blue-700 font-mono text-xs font-bold px-2.5 py-0.5 rounded-full border border-blue-200">
+          0 Students
+        </span>
+      </div>
+
+      <!-- Clean Filter Controls: Section Filter, Search, and Add Student -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <!-- Section Filter -->
+        <select id="assign-filter-section" onchange="AssignmentsComponent.onSectionChange(this.value)"
+          class="bg-white border border-slate-300 text-slate-700 text-xs font-semibold rounded-xl px-3 py-1.5 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          <option value="ALL">All Sections</option>
+        </select>
+
+        <!-- Search Input -->
+        <div class="relative">
+          <input type="text" id="assign-roster-search" oninput="AssignmentsComponent.filterRoster(this.value)"
+            placeholder="Search ID, name..."
+            class="bg-white border border-slate-300 text-slate-800 text-xs rounded-xl px-3 py-1.5 pl-8 focus:ring-2 focus:ring-blue-500 focus:outline-none w-44">
+          <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+
+        <button onclick="AssignmentsComponent.openAddStudentModal()"
+          class="text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 px-3 py-1.5 rounded-xl transition flex items-center gap-1 shadow-2xs">
+          <span>+ Add Student</span>
+        </button>
+
+        <!-- Hidden elements for backward-compatibility with tests / internal methods -->
+        <div class="hidden">
+          <select id="assign-filter-batch"><option value="ALL">All Batches</option></select>
+          <select id="assign-filter-stream"><option value="ALL">All Streams</option></select>
+          <select id="assign-filter-sex"><option value="ALL">All Sex</option></select>
+          <button id="btn-roster-view-course"></button>
+          <button id="btn-roster-view-all"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="overflow-x-auto max-h-[480px] custom-scrollbar">
+      <table class="w-full text-left text-xs text-slate-700">
+        <thead class="bg-slate-100 text-slate-500 uppercase tracking-wider font-bold text-[10px] sticky top-0 z-10 border-b border-slate-200">
+          <tr>
+            <th class="px-3.5 py-3">#</th>
+            <th class="px-3.5 py-3">Student ID</th>
+            <th class="px-3.5 py-3">Full Name</th>
+            <th class="px-3.5 py-3 text-center">Sex</th>
+            <th class="px-3.5 py-3">Stream</th>
+            <th class="px-3.5 py-3">Section</th>
+            <th class="px-3.5 py-3">Status</th>
+            <th class="px-3.5 py-3 text-right">Action</th>
+          </tr>
+        </thead>
+        <tbody id="assign-roster-table-body" class="divide-y divide-slate-100">
+          <!-- Rendered via AssignmentsComponent.renderRosterTable() -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MODAL: PASTE STUDENT LIST (FRESHMAN OR DEPARTMENT INGESTION) -->
+  <div id="modal-assign-paste-text" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-2xl overflow-hidden">
+      <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+        <div>
+          <h4 id="assign-paste-modal-title" class="font-extrabold text-base">Paste Student List</h4>
+          <p id="assign-paste-modal-subtitle" class="text-[11px] text-slate-300 mt-0.5">
+            Columns: Student ID, Full Name, Sex (M / F), Stream (Natural / Social), Section
+          </p>
+        </div>
+        <button onclick="AssignmentsComponent.closePasteModal()" class="text-slate-400 hover:text-white p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="p-6 space-y-3">
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 text-xs text-blue-900 space-y-1">
+          <div class="font-bold">Accepted Format (Tab, Comma, or Semicolon separated):</div>
+          <div class="font-mono text-[11px] text-blue-700">Student ID, Full Name, Sex (M / F), Stream (Natural / Social), Section</div>
+        </div>
+        <textarea id="assign-paste-textarea" rows="8" placeholder="UGR/4001/15, Abebe Bekele, M, Natural Science, Section A&#10;UGR/4002/15, Tigist Haile, F, Social Science, Section B&#10;UGR/4003/15, Dawit Yohannes, M, Natural Science, Section A"
+          class="w-full p-3 text-xs font-mono bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+        <div class="flex items-center justify-between pt-1">
+          <label class="flex items-center gap-2 text-xs font-semibold text-slate-600 cursor-pointer">
+            <input type="checkbox" id="assign-paste-replace-chk" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+            <span>Replace current list instead of appending</span>
+          </label>
+          <span class="text-[11px] text-slate-400">Section auto-assigned A&ndash;Z if omitted</span>
+        </div>
+      </div>
+      <div class="bg-slate-100 px-6 py-3 border-t border-slate-200 flex justify-end gap-2">
+        <button onclick="AssignmentsComponent.closePasteModal()" class="px-4 py-2 text-xs font-bold text-slate-600 hover:text-slate-800">Cancel</button>
+        <button onclick="AssignmentsComponent.processPastedList()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-5 py-2 rounded-xl transition shadow-sm">Import Student List</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: MANUAL FORWARD / PASS STUDENT LIST TO DEPARTMENT (NO GRADE FORMULAS) -->
+  <div id="modal-assign-forward-dept" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-4xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-black text-xs border border-emerald-400/30">
+            &rarr;
+          </div>
+          <div>
+            <h4 id="forward-modal-title" class="font-extrabold text-base text-white">Pass Official Student List</h4>
+            <p id="forward-modal-desc" class="text-xs text-slate-300">Select students to advance to the next institutional level.</p>
+          </div>
+        </div>
+        <button onclick="AssignmentsComponent.closeForwardDeptModal()" class="text-slate-400 hover:text-white p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      
+      <div class="p-6 space-y-4 overflow-y-auto custom-scrollbar flex-1">
+        <!-- Destination College & Department Selection -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <div id="forward-group-college" class="md:col-span-12">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Target Degree College (Freshman Semester II)</label>
+            <select id="forward-target-college" onchange="AssignmentsComponent.updateForwardSummary()"
+              class="w-full bg-white border border-slate-300 text-slate-800 text-xs font-bold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <!-- Populated dynamically with non-freshman colleges -->
+            </select>
+          </div>
+
+          <div id="forward-group-dept" class="md:col-span-12 hidden">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Target Degree Department (Year 2 &rarr; Graduation)</label>
+            <select id="forward-target-dept" onchange="AssignmentsComponent.updateForwardSummary()"
+              class="w-full bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs font-bold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <!-- Populated dynamically with departments of chosen college -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Option A: File Upload of Official Placement List -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-2xl border border-blue-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-0.5">
+            <h5 class="text-xs font-extrabold text-blue-900 flex items-center gap-1.5">
+              <span>📄</span>
+              <span>Fast Ingestion: Upload Official Placement File</span>
+              <span class="bg-blue-200/60 text-blue-800 text-[10px] font-mono px-1.5 py-0.5 rounded font-bold">.xlsx / .csv / .txt</span>
+            </h5>
+            <p class="text-[11px] text-blue-700">
+              Upload the official placement list file from the Registrar or Dean to instantly pass students to the destination.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <input type="file" id="forward-placement-file-input" accept=".xlsx,.xls,.csv,.txt" class="hidden" onchange="AssignmentsComponent.handlePlacementFileUpload(event)">
+            <button onclick="document.getElementById('forward-placement-file-input').click()"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shadow-blue-500/20">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+              <span>Upload Placement File</span>
+            </button>
+            <button onclick="AssignmentsComponent.downloadPlacementTemplate()"
+              class="bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs px-3 py-2 rounded-xl transition flex items-center gap-1.5 border border-slate-300 shadow-xs"
+              title="Download CSV Placement Template">
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              <span>Template</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="relative flex py-1 items-center">
+          <div class="flex-grow border-t border-slate-200"></div>
+          <span class="flex-shrink mx-3 text-slate-400 text-[10px] font-bold uppercase tracking-wider">Or Select Directly from Current Roster</span>
+          <div class="flex-grow border-t border-slate-200"></div>
+        </div>
+
+        <!-- Filter & Quick Select Controls -->
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2 flex-wrap">
+            <select id="forward-filter-stream" onchange="AssignmentsComponent.renderForwardPreviewTable()"
+              class="bg-white border border-slate-300 text-slate-700 text-xs font-bold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="ALL">All Streams</option>
+              <option value="Natural Science">Natural Science Only</option>
+              <option value="Social Science">Social Science Only</option>
+            </select>
+
+            <select id="forward-filter-section" onchange="AssignmentsComponent.renderForwardPreviewTable()"
+              class="bg-white border border-slate-300 text-slate-700 text-xs font-bold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="ALL">All Sections</option>
+            </select>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="AssignmentsComponent.selectAllForwardVisible(true)"
+              class="text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-xl border border-blue-200 transition">
+              Select All Visible
+            </button>
+            <button onclick="AssignmentsComponent.selectAllForwardVisible(false)"
+              class="text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-xl border border-slate-200 transition">
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Student Checklist Table -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+          <div class="px-4 py-2.5 bg-slate-100 border-b border-slate-200 flex items-center justify-between">
+            <h5 class="font-extrabold text-xs text-slate-800 uppercase tracking-wider">
+              Select Students to Pass to Target Department
+            </h5>
+            <span id="forward-selected-count" class="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              0 Selected
+            </span>
+          </div>
+
+          <div class="overflow-x-auto max-h-[300px] custom-scrollbar">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-500 font-bold uppercase text-[10px] sticky top-0 border-b border-slate-200 z-10">
+                <tr>
+                  <th class="px-3 py-2 w-10 text-center">Pick</th>
+                  <th class="px-3 py-2">Student ID</th>
+                  <th class="px-3 py-2">Full Name</th>
+                  <th class="px-3 py-2">Batch</th>
+                  <th class="px-3 py-2">Stream</th>
+                  <th class="px-3 py-2">Section</th>
+                  <th class="px-3 py-2">Current Status</th>
+                </tr>
+              </thead>
+              <tbody id="forward-students-table-body" class="divide-y divide-slate-100">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-100 px-6 py-3.5 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <span id="forward-footer-summary" class="text-xs text-slate-600 font-semibold">
+          Select students and a destination department.
+        </span>
+        <div class="flex items-center gap-2">
+          <button onclick="AssignmentsComponent.closeForwardDeptModal()" class="px-4 py-2 text-xs font-bold text-slate-600 hover:text-slate-800">Cancel</button>
+          <button onclick="AssignmentsComponent.executeForwardToDepartment()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl transition shadow-md flex items-center justify-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span id="forward-confirm-btn-label">Pass Student List to Department &rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: MANUAL SEMESTER PROMOTION FOR DEPARTMENT COHORT (YEAR 2 TO GRADUATION - NO UPLOAD) -->
+  <div id="modal-assign-promote-cohort" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-3xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-2xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center font-black text-xs border border-indigo-400/30">
+            🎓
+          </div>
+          <div>
+            <h4 class="font-extrabold text-base text-white">Promote Cohort to Next Academic Semester</h4>
+            <p id="promote-modal-dept-desc" class="text-xs text-slate-300">Continuous CLO achievement promotion without re-uploading student lists.</p>
+          </div>
+        </div>
+        <button onclick="AssignmentsComponent.closePromoteModal()" class="text-slate-400 hover:text-white p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-4 overflow-y-auto custom-scrollbar flex-1">
+        <!-- Target Academic Semester -->
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center gap-1.5">
+            <span>Target Promotion Level &amp; Semester:</span>
+          </label>
+          <select id="promote-target-level" onchange="AssignmentsComponent.updatePromoteSummary()"
+            class="w-full bg-white border border-slate-300 text-slate-800 text-xs font-bold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+            <option value="Year 2 - Semester II">Year 2 &bull; Semester II</option>
+            <option value="Year 3 - Semester I">Year 3 &bull; Semester I</option>
+            <option value="Year 3 - Semester II">Year 3 &bull; Semester II</option>
+            <option value="Year 4 - Semester I">Year 4 &bull; Semester I</option>
+            <option value="Year 4 - Semester II (Graduation Candidate)">Year 4 &bull; Semester II (Graduation Candidate)</option>
+            <option value="Graduated (CLOs Verified)">Graduated &bull; All Program Outcomes &amp; CLOs Verified</option>
+          </select>
+        </div>
+
+        <!-- Student Selection Bar -->
+        <div class="flex items-center justify-between gap-3">
+          <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">
+            Select Students from Permanent Cohort:
+          </span>
+          <div class="flex items-center gap-2">
+            <button onclick="AssignmentsComponent.selectAllPromoteVisible(true)"
+              class="text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-xl border border-indigo-200 transition">
+              Select All
+            </button>
+            <button onclick="AssignmentsComponent.selectAllPromoteVisible(false)"
+              class="text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-xl border border-slate-200 transition">
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Promote Table -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+          <div class="overflow-x-auto max-h-[300px] custom-scrollbar">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-500 font-bold uppercase text-[10px] sticky top-0 border-b border-slate-200 z-10">
+                <tr>
+                  <th class="px-3 py-2 w-10 text-center">Pick</th>
+                  <th class="px-3 py-2">Student ID</th>
+                  <th class="px-3 py-2">Full Name</th>
+                  <th class="px-3 py-2">Section</th>
+                  <th class="px-3 py-2">Current Academic Level</th>
+                </tr>
+              </thead>
+              <tbody id="promote-students-table-body" class="divide-y divide-slate-100">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-100 px-6 py-3.5 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <span id="promote-footer-summary" class="text-xs text-slate-600 font-semibold">
+          Select students to promote to the next semester.
+        </span>
+        <div class="flex items-center gap-2">
+          <button onclick="AssignmentsComponent.closePromoteModal()" class="px-4 py-2 text-xs font-bold text-slate-600 hover:text-slate-800">Cancel</button>
+          <button onclick="AssignmentsComponent.executePromoteCohort()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl transition shadow-md flex items-center justify-center gap-1.5">
+            <svg class="w-4 h-4 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span>Confirm Semester Promotion &rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETE STREAM STAFFING SUMMARY MODAL -->
+  <div id="assign-stream-overview-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-4xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] flex flex-col">
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-700 font-extrabold text-sm flex items-center justify-center border border-blue-200 shadow-2xs">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-base text-slate-900">Institutional Course Staffing Summary</h3>
+            <p id="assign-modal-stream-subtitle" class="text-xs text-slate-500">
+              Overview of all courses, sections, assigned faculty, and student enrollments.
+            </p>
+          </div>
+        </div>
+        <button type="button" onclick="AssignmentsComponent.closeStreamOverviewModal()"
+          class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center text-sm font-bold transition">
+          &times;
+        </button>
+      </div>
+
+      <!-- Overview Content Table -->
+      <div class="overflow-y-auto flex-1 border border-slate-200 rounded-2xl">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead class="bg-slate-100/80 text-slate-600 font-bold uppercase tracking-wider text-[11px] sticky top-0 border-b border-slate-200 z-10">
+            <tr>
+              <th class="py-2.5 px-4">Course</th>
+              <th class="py-2.5 px-3">Stream / Department</th>
+              <th class="py-2.5 px-4">Section Staffing & Cohort Breakdown</th>
+              <th class="py-2.5 px-3 text-center">Status</th>
+              <th class="py-2.5 px-3 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="assign-stream-overview-body" class="divide-y divide-slate-100">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer -->
+      <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+        <span id="assign-modal-summary-footer" class="text-slate-500 font-medium"></span>
+        <button type="button" onclick="AssignmentsComponent.closeStreamOverviewModal()"
+          class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-2 rounded-xl transition shadow-xs">
+          Close Overview
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>

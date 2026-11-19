@@ -1,0 +1,222 @@
+<!-- ========================================================================= -->
+<!-- DEPARTMENT HEAD OVERSIGHT DASHBOARD (SUB-ADMIN WORKSPACE)                   -->
+<!-- Exam Moderation, Faculty Staffing & Grade Approvals                         -->
+<!-- ========================================================================= -->
+<div id="depthead-dashboard-view" class="space-y-6 hidden">
+
+  <!-- Header Banner -->
+  <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6 space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="w-16 h-16 rounded-full bg-indigo-600 text-white flex items-center justify-center font-black text-xl shadow-sm">
+          YM
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              Prof. Yared M (PhD)
+            </h1>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-indigo-50 text-indigo-800 border border-indigo-200">
+              Department Head
+            </span>
+          </div>
+          <p class="text-xs text-slate-600 font-medium mt-0.5">
+            Head, Department of Data Science &bull; College of Computing & Technology &bull; Debre Berhan University
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="TeacherPortal.switchToRoleView('teacher')"
+          class="px-3.5 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs">
+          <span>&larr; Switch to Instructor Workspace</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100 text-xs">
+      <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Faculty Members</span>
+        <strong class="text-slate-900 font-black block mt-0.5">5 Instructors</strong>
+      </div>
+      <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Exams in Moderation</span>
+        <strong id="dept-stat-pending-exams" class="text-amber-700 font-mono font-bold block mt-0.5">1 Pending Review</strong>
+      </div>
+      <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">CLO Attainment Avg</span>
+        <strong class="text-emerald-700 font-mono font-bold block mt-0.5">77.4% (Target Met)</strong>
+      </div>
+      <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Department Cohorts</span>
+        <strong class="text-blue-700 font-mono font-bold block mt-0.5">24 Students (Batch 2015)</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. EXAM MODERATION QUEUE (Review and Send Back Loop) -->
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 space-y-4">
+    <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+      <div>
+        <h2 class="text-base font-black text-slate-900 tracking-tight flex items-center gap-2">
+          <span>Department Exam Moderation Committee</span>
+          <span class="text-xs bg-amber-50 text-amber-700 font-mono font-bold px-2 py-0.5 rounded-full border border-amber-200">
+            Official Review Queue
+          </span>
+        </h2>
+        <p class="text-xs text-slate-500 mt-0.5">
+          Vetting course exam questions for 1-to-1 CLO mapping, Bloom's cognitive depth, and point distribution before printing.
+        </p>
+      </div>
+    </div>
+
+    <!-- Exam Submission Card -->
+    <div class="p-5 rounded-2xl border-2 border-slate-200 hover:border-indigo-400 transition bg-slate-50/50 space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-xs font-black bg-blue-600 text-white px-2.5 py-0.5 rounded">Stat4092</span>
+            <h3 class="font-bold text-slate-900 text-sm">Operations Research &amp; Optimization &bull; Mid Exam</h3>
+            <span id="dept-exam-card-status" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200">
+              Pending Department Review
+            </span>
+          </div>
+          <p class="text-xs text-slate-500">
+            Submitted by: <strong>Dr. Adimias W (PhD)</strong> &bull; Total Allocated: <strong>20.0 pts (15% Weight)</strong> &bull; Duration: <strong>60 min</strong>
+          </p>
+        </div>
+
+        <!-- Moderation Action Buttons -->
+        <div class="flex items-center gap-2 flex-wrap">
+          <button type="button" onclick="TeacherPortal.openCourse('course_stat4092'); TeacherPortal.switchTab('authoring');"
+            class="px-3 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition flex items-center gap-1 shadow-2xs cursor-pointer">
+            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            <span>Inspect Questions</span>
+          </button>
+          
+          <button type="button" onclick="TeacherPortal.openExamRevisionModal()"
+            class="px-3.5 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-2xs cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
+            <span>Request Revision</span>
+          </button>
+
+          <button type="button" onclick="TeacherPortal.approveExamPaper()"
+            class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-2xs cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span>Approve Exam</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question Analysis Breakdown -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
+        <div>
+          <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Target Outcomes</span>
+          <span class="font-bold text-slate-800">CLO1 (7.0 pts) &bull; CLO2 (13.0 pts)</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Bloom Cognitive Depth</span>
+          <span class="font-bold text-indigo-700">Analyzing (4 pts) &bull; Understanding (16 pts)</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">AI Alignment Index</span>
+          <span class="font-bold text-emerald-700">94% Aligned with Syllabus</span>
+        </div>
+      </div>
+
+      <div id="dept-revision-log" class="hidden p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900">
+        <!-- Log of feedback rendered here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. FACULTY WORKLOAD & COURSE ASSIGNMENTS -->
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 space-y-4">
+    <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+      <div>
+        <h2 class="text-base font-black text-slate-900 tracking-tight">Faculty Workload &amp; Course Staffing</h2>
+        <p class="text-xs text-slate-500">Monitor credit load (12 Cr Max per semester) and assign department offerings.</p>
+      </div>
+      <a href="index.html" class="text-xs font-bold text-blue-600 hover:text-blue-800">
+        Open Staffing Stage &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+      <!-- Instructor 1 -->
+      <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+        <div class="flex items-center justify-between">
+          <strong class="text-slate-900 text-sm">Dr. Adimias W (PhD)</strong>
+          <span class="font-mono px-2 py-0.5 rounded text-[10px] bg-blue-100 text-blue-800 font-bold">6 / 12 Cr</span>
+        </div>
+        <p class="text-slate-500 text-[11px]">Associate Professor &bull; Operations Research</p>
+        <div class="pt-2 border-t border-slate-200 space-y-1">
+          <div class="font-bold text-slate-700 flex items-center justify-between">
+            <span>Stat4092: Operations Research</span>
+            <span class="font-mono text-slate-500">3 Cr</span>
+          </div>
+          <div class="font-bold text-slate-700 flex items-center justify-between">
+            <span>DaSc4061: Bayesian Statistics</span>
+            <span class="font-mono text-slate-500">3 Cr</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructor 2 -->
+      <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+        <div class="flex items-center justify-between">
+          <strong class="text-slate-900 text-sm">Prof. Yared M (PhD)</strong>
+          <span class="font-mono px-2 py-0.5 rounded text-[10px] bg-blue-100 text-blue-800 font-bold">3 / 12 Cr</span>
+        </div>
+        <p class="text-slate-500 text-[11px]">Professor &bull; Head of Department</p>
+        <div class="pt-2 border-t border-slate-200 space-y-1">
+          <div class="font-bold text-slate-700 flex items-center justify-between">
+            <span>Math2031: Linear Algebra I</span>
+            <span class="font-mono text-slate-500">3 Cr</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructor 3 -->
+      <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+        <div class="flex items-center justify-between">
+          <strong class="text-slate-900 text-sm">Dr. Selamawit T (PhD)</strong>
+          <span class="font-mono px-2 py-0.5 rounded text-[10px] bg-blue-100 text-blue-800 font-bold">4 / 12 Cr</span>
+        </div>
+        <p class="text-slate-500 text-[11px]">Assistant Professor &bull; Machine Learning</p>
+        <div class="pt-2 border-t border-slate-200 space-y-1">
+          <div class="font-bold text-slate-700 flex items-center justify-between">
+            <span>DS302: Machine Learning for DS</span>
+            <span class="font-mono text-slate-500">4 Cr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. GRADE VETTING & DISPATCH TO COLLEGE DEAN -->
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+      <div>
+        <h2 class="text-base font-black text-slate-900 tracking-tight">Grade Vetting &amp; Executive Sign-Off</h2>
+        <p class="text-xs text-slate-500">Sign off on verified student marks and forward department outcome attainment to College Dean.</p>
+      </div>
+      <button type="button" onclick="TeacherPortal.dispatchToCollegeDean()"
+        class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Sign &amp; Forward Department Attainment to College Dean &rarr;</span>
+      </button>
+    </div>
+
+    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+        <span class="text-slate-700 font-medium">Stat4092 (24 Students) marks entered and validated. Continuous CLO Attainment: <strong>76.3% (Target Met)</strong>.</span>
+      </div>
+      <span class="font-mono text-slate-500 font-bold">Status: Ready for Dean Audit</span>
+    </div>
+  </div>
+
+</div>
+

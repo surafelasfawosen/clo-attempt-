@@ -1,0 +1,10 @@
+/* ==============================================================================
+   STYLES.CSS: Master Bundle for Higher Education Curriculum & OBE Platform
+   Imports all modular stylesheets.
+   ============================================================================== */
+
+@import './main.css';
+@import './layout.css';
+@import './studio.css';
+@import './dossier.css';
+@import './print.css';

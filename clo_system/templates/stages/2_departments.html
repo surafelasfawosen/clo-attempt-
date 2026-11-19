@@ -1,0 +1,31 @@
+<!-- ======================================================== -->
+<!-- STAGE 2: DEPARTMENTS MANAGEMENT                          -->
+<!-- ======================================================== -->
+<section id="stage-departments" class="max-w-5xl mx-auto space-y-6 hidden">
+  <div class="flex flex-wrap justify-between items-center gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+    <div>
+      <div class="flex items-center gap-2 text-xs font-bold text-slate-400">
+        <button onclick="App.goToStage('colleges')" class="text-blue-600 hover:underline flex items-center gap-1">
+          <span>&larr; Back to Colleges</span>
+        </button>
+        <span>&bull;</span>
+        <span class="text-indigo-600 uppercase tracking-wider font-extrabold">Step 2: Department Directory</span>
+      </div>
+      <h2 class="text-xl md:text-2xl font-black text-slate-900 mt-1" id="dept-stage-heading">
+        College Departments
+      </h2>
+      <p class="text-sm text-slate-500 mt-0.5" id="dept-stage-subheading">
+        Select a department to view and manage its chronological curriculum.
+      </p>
+    </div>
+    <button onclick="DepartmentsComponent.openAddModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow-sm shadow-indigo-500/20">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+      <span>+ Add Department</span>
+    </button>
+  </div>
+
+  <div id="departments-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <!-- Dynamically populated via DepartmentsComponent.render() -->
+  </div>
+</section>
+

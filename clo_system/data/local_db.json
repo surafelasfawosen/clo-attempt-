@@ -1,0 +1,961 @@
+{
+  "college": [
+    {
+      "id": "col_informatics",
+      "name": "College of Computing and Informatics",
+      "dean_name": "Dr. Mengistu Haile (College Dean)",
+      "university_name": "Higher University of Science and Technology"
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept_ds_ai",
+      "name": "Department of Data Science & Artificial Intelligence",
+      "code": "DS-AI",
+      "college_id": "col_informatics",
+      "head_name": "Dr. Surafel Asfawosen (Department Head)"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr_curriculum",
+      "name": "Dr. Sarah Bekele",
+      "email": "sarah.b@university.edu",
+      "role": "curriculum_editor",
+      "department_id": "dept_ds_ai",
+      "college_id": "col_informatics"
+    },
+    {
+      "id": "usr_teacher",
+      "name": "Prof. Abebe Kebede",
+      "email": "abebe.k@university.edu",
+      "role": "teacher",
+      "department_id": "dept_ds_ai",
+      "college_id": "col_informatics"
+    },
+    {
+      "id": "usr_dept_head",
+      "name": "Dr. Surafel Asfawosen",
+      "email": "surafel.a@university.edu",
+      "role": "department_head",
+      "department_id": "dept_ds_ai",
+      "college_id": "col_informatics"
+    },
+    {
+      "id": "usr_dean",
+      "name": "Dr. Mengistu Haile",
+      "email": "dean.mengistu@university.edu",
+      "role": "dean",
+      "department_id": "dept_ds_ai",
+      "college_id": "col_informatics"
+    }
+  ],
+  "plos": [
+    {
+      "id": "plo1",
+      "code": "PLO1",
+      "title": "Mathematical & Algorithmic Foundations",
+      "description": "Apply foundations of linear algebra, probability, statistics, and algorithms to computational modeling.",
+      "department_id": "dept_ds_ai"
+    },
+    {
+      "id": "plo2",
+      "code": "PLO2",
+      "title": "Machine Learning & AI Engineering",
+      "description": "Design, implement, evaluate and fine-tune supervised, unsupervised, and deep learning algorithms.",
+      "department_id": "dept_ds_ai"
+    },
+    {
+      "id": "plo3",
+      "code": "PLO3",
+      "title": "Data Pipeline & Engineering",
+      "description": "Construct scalable data preprocessing, transformation, and feature engineering workflows.",
+      "department_id": "dept_ds_ai"
+    },
+    {
+      "id": "plo4",
+      "code": "PLO4",
+      "title": "Model Evaluation & Verification",
+      "description": "Rigorously benchmark models against baseline metrics, cross-validation, and error diagnostics.",
+      "department_id": "dept_ds_ai"
+    },
+    {
+      "id": "plo5",
+      "code": "PLO5",
+      "title": "Ethics, Society & Professional Practice",
+      "description": "Assess bias, fairness, transparency, and data governance in AI systems deployed in society.",
+      "department_id": "dept_ds_ai"
+    }
+  ],
+  "courses": [
+    {
+      "id": "course_ds302",
+      "code": "DS302",
+      "title": "Machine Learning for Data Science",
+      "department_id": "dept_ds_ai",
+      "academic_year": "Year 3",
+      "semester": "Semester 1 (Academic Year 2026/2027)",
+      "credit_hours": 4,
+      "lecture_hours": 3,
+      "lab_hours": 2,
+      "prerequisites": [
+        "MATH201 (Linear Algebra)",
+        "DS201 (Probability & Statistics)",
+        "CS202 (Python Programming)"
+      ],
+      "description": "Comprehensive study of core machine learning algorithms, model evaluation, unsupervised learning, and practical production pipelines for real-world data science challenges.",
+      "instructor_id": "usr_teacher",
+      "instructor_name": "Prof. Abebe Kebede",
+      "status": "Published",
+      "direct_weight_pct": 80.0,
+      "indirect_weight_pct": 20.0,
+      "clos": [
+        {
+          "id": "clo1",
+          "code": "CLO1",
+          "description": "Demonstrate theoretical understanding of core ML paradigms (supervised, unsupervised, and reinforcement learning).",
+          "blooms_level": "Understanding",
+          "target_attainment_pct": 70.0,
+          "passing_score_pct": 60.0,
+          "plo_mappings": [
+            {
+              "plo_id": "plo1",
+              "weight": "High",
+              "numeric_weight": 3
+            },
+            {
+              "plo_id": "plo2",
+              "weight": "Medium",
+              "numeric_weight": 2
+            }
+          ]
+        },
+        {
+          "id": "clo2",
+          "code": "CLO2",
+          "description": "Implement, configure, and train supervised learning models (Regression, SVM, Decision Trees, Ensemble methods) using Python.",
+          "blooms_level": "Applying",
+          "target_attainment_pct": 70.0,
+          "passing_score_pct": 60.0,
+          "plo_mappings": [
+            {
+              "plo_id": "plo2",
+              "weight": "High",
+              "numeric_weight": 3
+            },
+            {
+              "plo_id": "plo3",
+              "weight": "Medium",
+              "numeric_weight": 2
+            }
+          ]
+        },
+        {
+          "id": "clo3",
+          "code": "CLO3",
+          "description": "Analyze datasets using unsupervised algorithms (K-Means clustering, DBSCAN, and PCA dimensionality reduction).",
+          "blooms_level": "Analyzing",
+          "target_attainment_pct": 70.0,
+          "passing_score_pct": 60.0,
+          "plo_mappings": [
+            {
+              "plo_id": "plo2",
+              "weight": "High",
+              "numeric_weight": 3
+            },
+            {
+              "plo_id": "plo3",
+              "weight": "High",
+              "numeric_weight": 3
+            }
+          ]
+        },
+        {
+          "id": "clo4",
+          "code": "CLO4",
+          "description": "Critically evaluate ML model performance, diagnose overfitting/underfitting, and tune hyperparameters via cross-validation.",
+          "blooms_level": "Evaluating",
+          "target_attainment_pct": 70.0,
+          "passing_score_pct": 60.0,
+          "plo_mappings": [
+            {
+              "plo_id": "plo4",
+              "weight": "High",
+              "numeric_weight": 3
+            }
+          ]
+        },
+        {
+          "id": "clo5",
+          "code": "CLO5",
+          "description": "Architect an end-to-end Machine Learning pipeline solving a real-world problem, addressing fairness, bias, and deployment constraints.",
+          "blooms_level": "Creating",
+          "target_attainment_pct": 70.0,
+          "passing_score_pct": 60.0,
+          "plo_mappings": [
+            {
+              "plo_id": "plo2",
+              "weight": "High",
+              "numeric_weight": 3
+            },
+            {
+              "plo_id": "plo5",
+              "weight": "High",
+              "numeric_weight": 3
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "id": "asm_quiz1",
+          "name": "Quiz 1: ML Foundations & Supervised Concepts",
+          "assessment_type": "Quiz",
+          "total_marks": 10.0,
+          "course_weight_pct": 10.0,
+          "clo_marks_distribution": {
+            "clo1": 6.0,
+            "clo2": 4.0
+          }
+        },
+        {
+          "id": "asm_assign1",
+          "name": "Assignment 1: Regression & Decision Trees Implementation",
+          "assessment_type": "Assignment",
+          "total_marks": 10.0,
+          "course_weight_pct": 10.0,
+          "clo_marks_distribution": {
+            "clo2": 5.0,
+            "clo3": 5.0
+          }
+        },
+        {
+          "id": "asm_midterm",
+          "name": "Midterm Examination",
+          "assessment_type": "Midterm_Exam",
+          "total_marks": 25.0,
+          "course_weight_pct": 25.0,
+          "clo_marks_distribution": {
+            "clo1": 6.0,
+            "clo2": 11.0,
+            "clo3": 8.0
+          }
+        },
+        {
+          "id": "asm_project",
+          "name": "Lab Practical & Capstone ML Project",
+          "assessment_type": "Lab_Project",
+          "total_marks": 20.0,
+          "course_weight_pct": 20.0,
+          "clo_marks_distribution": {
+            "clo2": 3.0,
+            "clo3": 4.0,
+            "clo4": 6.0,
+            "clo5": 7.0
+          }
+        },
+        {
+          "id": "asm_final",
+          "name": "Comprehensive Final Examination",
+          "assessment_type": "Final_Exam",
+          "total_marks": 35.0,
+          "course_weight_pct": 35.0,
+          "clo_marks_distribution": {
+            "clo1": 5.0,
+            "clo2": 8.0,
+            "clo3": 7.0,
+            "clo4": 8.0,
+            "clo5": 7.0
+          }
+        }
+      ]
+    }
+  ],
+  "students": [
+    {
+      "id": "UGR/4001/16",
+      "full_name": "Aaron Tadesse",
+      "email": "aaron.tadesse@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4002/16",
+      "full_name": "Bethelhem Alemu",
+      "email": "bethelhem.alemu@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4003/16",
+      "full_name": "Chala Demissie",
+      "email": "chala.demissie@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4004/16",
+      "full_name": "Dagmawi Girma",
+      "email": "dagmawi.girma@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4005/16",
+      "full_name": "Eden Solomon",
+      "email": "eden.solomon@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4006/16",
+      "full_name": "Fikadu Negash",
+      "email": "fikadu.negash@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4007/16",
+      "full_name": "Gelila Tefera",
+      "email": "gelila.tefera@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4008/16",
+      "full_name": "Henok Wondimu",
+      "email": "henok.wondimu@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4009/16",
+      "full_name": "Iman Mohammed",
+      "email": "iman.mohammed@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4010/16",
+      "full_name": "Jemal Kassim",
+      "email": "jemal.kassim@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4011/16",
+      "full_name": "Kalkidan Yonas",
+      "email": "kalkidan.yonas@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4012/16",
+      "full_name": "Leul Mesfin",
+      "email": "leul.mesfin@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4013/16",
+      "full_name": "Meron Assefa",
+      "email": "meron.assefa@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4014/16",
+      "full_name": "Natnael Berhanu",
+      "email": "natnael.berhanu@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4015/16",
+      "full_name": "Olivia Yohannes",
+      "email": "olivia.yohannes@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4016/16",
+      "full_name": "Paulos Teshome",
+      "email": "paulos.teshome@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4017/16",
+      "full_name": "Ruth Getachew",
+      "email": "ruth.getachew@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4018/16",
+      "full_name": "Samuel Bekele",
+      "email": "samuel.bekele@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4019/16",
+      "full_name": "Tigist Hailu",
+      "email": "tigist.hailu@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4020/16",
+      "full_name": "Utuk Okello",
+      "email": "utuk.okello@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4021/16",
+      "full_name": "Veronica Zeleke",
+      "email": "veronica.zeleke@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4022/16",
+      "full_name": "Wondwosen Kassa",
+      "email": "wondwosen.kassa@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4023/16",
+      "full_name": "Yared Fisseha",
+      "email": "yared.fisseha@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4024/16",
+      "full_name": "Zinash Worku",
+      "email": "zinash.worku@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4025/16",
+      "full_name": "Abinet Sisay",
+      "email": "abinet.sisay@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4026/16",
+      "full_name": "Bilen Melaku",
+      "email": "bilen.melaku@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4027/16",
+      "full_name": "Dawit Hailemariam",
+      "email": "dawit.hailemariam@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4028/16",
+      "full_name": "Emnet Daniel",
+      "email": "emnet.daniel@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    },
+    {
+      "id": "UGR/4029/16",
+      "full_name": "Fasil Bogale",
+      "email": "fasil.bogale@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "M"
+    },
+    {
+      "id": "UGR/4030/16",
+      "full_name": "Genet Ayalew",
+      "email": "genet.ayalew@student.university.edu",
+      "department_id": "dept_ds_ai",
+      "year_level": "Year 3",
+      "gender": "F"
+    }
+  ],
+  "scores": [
+    {
+      "student_id": "UGR/4001/16",
+      "student_name": "Aaron Tadesse",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 8.7,
+        "asm_assign1": 9.2,
+        "asm_midterm": 22.5,
+        "asm_project": 19.4,
+        "asm_final": 32.6
+      }
+    },
+    {
+      "student_id": "UGR/4002/16",
+      "student_name": "Bethelhem Alemu",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 7.7,
+        "asm_assign1": 8.3,
+        "asm_midterm": 19.3,
+        "asm_project": 16.0,
+        "asm_final": 28.1
+      }
+    },
+    {
+      "student_id": "UGR/4003/16",
+      "student_name": "Chala Demissie",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 4.5,
+        "asm_assign1": 5.2,
+        "asm_midterm": 12.2,
+        "asm_project": 9.3,
+        "asm_final": 16.7
+      }
+    },
+    {
+      "student_id": "UGR/4004/16",
+      "student_name": "Dagmawi Girma",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 7.4,
+        "asm_assign1": 8.6,
+        "asm_midterm": 20.5,
+        "asm_project": 16.0,
+        "asm_final": 26.2
+      }
+    },
+    {
+      "student_id": "UGR/4005/16",
+      "student_name": "Eden Solomon",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 9.5,
+        "asm_assign1": 9.4,
+        "asm_midterm": 23.1,
+        "asm_project": 20.0,
+        "asm_final": 33.6
+      }
+    },
+    {
+      "student_id": "UGR/4006/16",
+      "student_name": "Fikadu Negash",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 8.3,
+        "asm_assign1": 8.3,
+        "asm_midterm": 21.2,
+        "asm_project": 16.1,
+        "asm_final": 27.7
+      }
+    },
+    {
+      "student_id": "UGR/4007/16",
+      "student_name": "Gelila Tefera",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 8.2,
+        "asm_assign1": 8.7,
+        "asm_midterm": 20.3,
+        "asm_project": 16.9,
+        "asm_final": 25.9
+      }
+    },
+    {
+      "student_id": "UGR/4008/16",
+      "student_name": "Henok Wondimu",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 4.8,
+        "asm_assign1": 4.7,
+        "asm_midterm": 11.9,
+        "asm_project": 9.5,
+        "asm_final": 16.2
+      }
+    },
+    {
+      "student_id": "UGR/4009/16",
+      "student_name": "Iman Mohammed",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 7.5,
+        "asm_assign1": 7.7,
+        "asm_midterm": 18.5,
+        "asm_project": 15.1,
+        "asm_final": 28.0
+      }
+    },
+    {
+      "student_id": "UGR/4010/16",
+      "student_name": "Jemal Kassim",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 7.8,
+        "asm_assign1": 7.5,
+        "asm_midterm": 19.8,
+        "asm_project": 15.0,
+        "asm_final": 25.9
+      }
+    },
+    {
+      "student_id": "UGR/4011/16",
+      "student_name": "Kalkidan Yonas",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 9.9,
+        "asm_assign1": 10.0,
+        "asm_midterm": 24.7,
+        "asm_project": 20.0,
+        "asm_final": 34.4
+      }
+    },
+    {
+      "student_id": "UGR/4012/16",
+      "student_name": "Leul Mesfin",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 6.3,
+        "asm_assign1": 6.8,
+        "asm_midterm": 16.6,
+        "asm_project": 13.4,
+        "asm_final": 25.2
+      }
+    },
+    {
+      "student_id": "UGR/4013/16",
+      "student_name": "Meron Assefa",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 7.9,
+        "asm_assign1": 8.5,
+        "asm_midterm": 20.1,
+        "asm_project": 17.5,
+        "asm_final": 27.9
+      }
+    },
+    {
+      "student_id": "UGR/4014/16",
+      "student_name": "Natnael Berhanu",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 4.8,
+        "asm_assign1": 5.3,
+        "asm_midterm": 12.1,
+        "asm_project": 10.6,
+        "asm_final": 18.7
+      }
+    },
+    {
+      "student_id": "UGR/4015/16",
+      "student_name": "Olivia Yohannes",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 8.6,
+        "asm_assign1": 9.8,
+        "asm_midterm": 22.5,
+        "asm_project": 17.4,
+        "asm_final": 29.2
+      }
+    },
+    {
+      "student_id": "UGR/4016/16",
+      "student_name": "Paulos Teshome",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 6.8,
+        "asm_assign1": 7.2,
+        "asm_midterm": 16.4,
+        "asm_project": 12.6,
+        "asm_final": 22.2
+      }
+    },
+    {
+      "student_id": "UGR/4017/16",
+      "student_name": "Ruth Getachew",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 8.4,
+        "asm_assign1": 9.2,
+        "asm_midterm": 21.9,
+        "asm_project": 16.0,
+        "asm_final": 29.7
+      }
+    },
+    {
+      "student_id": "UGR/4018/16",
+      "student_name": "Samuel Bekele",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 7.8,
+        "asm_assign1": 7.7,
+        "asm_midterm": 19.8,
+        "asm_project": 15.0,
+        "asm_final": 26.4
+      }
+    },
+    {
+      "student_id": "UGR/4019/16",
+      "student_name": "Tigist Hailu",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 9.6,
+        "asm_assign1": 9.7,
+        "asm_midterm": 22.0,
+        "asm_project": 18.4,
+        "asm_final": 29.9
+      }
+    },
+    {
+      "student_id": "UGR/4020/16",
+      "student_name": "Utuk Okello",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 8.7,
+        "asm_assign1": 8.2,
+        "asm_midterm": 20.9,
+        "asm_project": 17.0,
+        "asm_final": 26.9
+      }
+    },
+    {
+      "student_id": "UGR/4021/16",
+      "student_name": "Veronica Zeleke",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 5.6,
+        "asm_assign1": 6.1,
+        "asm_midterm": 14.0,
+        "asm_project": 10.3,
+        "asm_final": 18.3
+      }
+    },
+    {
+      "student_id": "UGR/4022/16",
+      "student_name": "Wondwosen Kassa",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 7.0,
+        "asm_assign1": 7.1,
+        "asm_midterm": 16.9,
+        "asm_project": 12.8,
+        "asm_final": 20.3
+      }
+    },
+    {
+      "student_id": "UGR/4023/16",
+      "student_name": "Yared Fisseha",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 8.7,
+        "asm_assign1": 7.9,
+        "asm_midterm": 20.4,
+        "asm_project": 15.7,
+        "asm_final": 29.0
+      }
+    },
+    {
+      "student_id": "UGR/4024/16",
+      "student_name": "Zinash Worku",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 9.0,
+        "asm_assign1": 9.6,
+        "asm_midterm": 23.7,
+        "asm_project": 18.6,
+        "asm_final": 33.9
+      }
+    },
+    {
+      "student_id": "UGR/4025/16",
+      "student_name": "Abinet Sisay",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 6.9,
+        "asm_assign1": 7.5,
+        "asm_midterm": 18.7,
+        "asm_project": 14.1,
+        "asm_final": 24.1
+      }
+    },
+    {
+      "student_id": "UGR/4026/16",
+      "student_name": "Bilen Melaku",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 8.6,
+        "asm_assign1": 8.5,
+        "asm_midterm": 21.0,
+        "asm_project": 16.2,
+        "asm_final": 27.8
+      }
+    },
+    {
+      "student_id": "UGR/4027/16",
+      "student_name": "Dawit Hailemariam",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 7.2,
+        "asm_assign1": 7.0,
+        "asm_midterm": 17.0,
+        "asm_project": 13.5,
+        "asm_final": 24.7
+      }
+    },
+    {
+      "student_id": "UGR/4028/16",
+      "student_name": "Emnet Daniel",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 9.3,
+        "asm_assign1": 9.4,
+        "asm_midterm": 20.9,
+        "asm_project": 17.3,
+        "asm_final": 30.8
+      }
+    },
+    {
+      "student_id": "UGR/4029/16",
+      "student_name": "Fasil Bogale",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 6.4,
+        "asm_assign1": 7.6,
+        "asm_midterm": 17.2,
+        "asm_project": 13.9,
+        "asm_final": 24.5
+      }
+    },
+    {
+      "student_id": "UGR/4030/16",
+      "student_name": "Genet Ayalew",
+      "course_id": "course_ds302",
+      "assessment_scores": {
+        "asm_quiz1": 7.6,
+        "asm_assign1": 7.7,
+        "asm_midterm": 19.9,
+        "asm_project": 16.2,
+        "asm_final": 27.4
+      }
+    }
+  ],
+  "surveys": [
+    {
+      "id": "srv_student_1",
+      "course_id": "course_ds302",
+      "stakeholder_type": "student_exit",
+      "respondent_id": "cohort_exit_aggregated",
+      "respondent_role": "Enrolled Year 3 Students (N=25)",
+      "organization": "Department of Data Science",
+      "clo_ratings": {
+        "clo1": 5,
+        "clo2": 4,
+        "clo3": 4,
+        "clo4": 4,
+        "clo5": 3
+      },
+      "comments": "Great hands-on coding for CLO2; CLO5 project had tight deadlines for ethical and deployment analysis."
+    },
+    {
+      "id": "srv_teacher_1",
+      "course_id": "course_ds302",
+      "stakeholder_type": "teacher_reflection",
+      "respondent_id": "usr_teacher",
+      "respondent_role": "Course Instructor (Prof. Abebe Kebede)",
+      "organization": "Department of Data Science",
+      "clo_ratings": {
+        "clo1": 5,
+        "clo2": 4,
+        "clo3": 4,
+        "clo4": 3,
+        "clo5": 4
+      },
+      "comments": "Students mastered supervised modeling well. Model diagnosis and hyperparameter tuning (CLO4) required extra lab hours."
+    },
+    {
+      "id": "srv_alumni_1",
+      "course_id": "course_ds302",
+      "stakeholder_type": "alumni",
+      "respondent_id": "alumni_panel_2025",
+      "respondent_role": "Alumni Graduates in Industry (N=8)",
+      "organization": "Tech Companies / Fintech / Research Labs",
+      "clo_ratings": {
+        "clo1": 4,
+        "clo2": 5,
+        "clo3": 4,
+        "clo4": 4,
+        "clo5": 4
+      },
+      "comments": "Practical skills learned in CLO2 and CLO3 were directly applicable in our current job roles."
+    },
+    {
+      "id": "srv_employer_1",
+      "course_id": "course_ds302",
+      "stakeholder_type": "employer",
+      "respondent_id": "employer_council",
+      "respondent_role": "Lead Data Scientists & Engineering Managers (N=5)",
+      "organization": "Industry Employers Panel",
+      "clo_ratings": {
+        "clo1": 4,
+        "clo2": 4,
+        "clo3": 4,
+        "clo4": 4,
+        "clo5": 3
+      },
+      "comments": "Graduates possess strong algorithmic foundations. Recommend adding more CI/CD and ML model monitoring in production (CLO5)."
+    },
+    {
+      "id": "srv_industry_1",
+      "course_id": "course_ds302",
+      "stakeholder_type": "industry_partner",
+      "respondent_id": "industry_advisory_board",
+      "respondent_role": "Advisory Board & Internship Mentors (N=4)",
+      "organization": "National AI Center & Partner Incubators",
+      "clo_ratings": {
+        "clo1": 5,
+        "clo2": 4,
+        "clo3": 4,
+        "clo4": 4,
+        "clo5": 4
+      },
+      "comments": "Course syllabus is well-aligned with contemporary AI trends and national strategic priorities."
+    }
+  ],
+  "reports": []
+}

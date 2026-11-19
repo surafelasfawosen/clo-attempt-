@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Teacher Assessment & Outcome Studio - Sub-Window & Professional Engine Styles
+   Debre Berhan University (DBU) OBE Platform
+   ========================================================================== */
+
+/* Sub-window card containers */
+.subwindow-card {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.subwindow-card:hover {
+  border-color: #cbd5e1;
+}
+
+/* Sub-window header bar */
+.subwindow-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Professional segmented control navigation tabs */
+.teacher-subtab-btn {
+  position: relative;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 700;
+  border-radius: 0.75rem;
+}
+
+.teacher-subtab-btn.active {
+  background-color: #ffffff;
+  color: #1d4ed8;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Sub-window smooth entrance */
+@keyframes subwindow-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subwindow-view {
+  animation: subwindow-in 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Metric chip styling */
+.metric-chip {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.875rem;
+  padding: 0.625rem 0.875rem;
+  transition: border-color 0.15s ease;
+}
+.metric-chip:hover {
+  border-color: #cbd5e1;
+}
+
+/* Certificate item cards */
+.cert-card {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cert-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom scrollbars inside sub-windows */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+

@@ -1,0 +1,22 @@
+/* ==============================================================================
+   STUDIO.CSS: Course Studio, 4 Editing Tabs, Frames & Chapter Styling
+   ============================================================================== */
+
+/* Tab Active Indicator */
+.tab-active {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.25);
+}
+
+/* Chapter Card Hover Framing */
+.chapter-frame {
+  border: 2px solid #e2e8f0;
+  border-radius: 1rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.chapter-frame:hover {
+  border-color: #818cf8;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+

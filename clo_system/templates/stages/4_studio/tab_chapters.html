@@ -1,0 +1,17 @@
+<!-- TAB 2: CHAPTERS -->
+<div id="tab-content-chapters" class="space-y-4 hidden">
+  <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex justify-between items-center">
+    <div>
+      <h4 class="font-bold text-slate-800 text-sm">Course Content, CLO Mapping &amp; Teaching Methods</h4>
+      <p class="text-xs font-semibold text-slate-500">Chapter breakdown, topic specifications, mapped outcomes, and instructional strategies.</p>
+    </div>
+    <button onclick="CourseStudioComponent.addChapter()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+      <span>+ Add Chapter</span>
+    </button>
+  </div>
+
+  <div id="studio-chapters-list" class="space-y-4">
+    <!-- Dynamically populated via CourseStudioComponent.renderChapters() -->
+  </div>
+</div>
+

@@ -1,0 +1,55 @@
+<!-- ========================================================================= -->
+<!-- SUB-WINDOW 1: ENROLLED STUDENT COHORT ROSTER                               -->
+<!-- Displays permanent student cohort passed from Admissions & Common Core     -->
+<!-- ========================================================================= -->
+<section id="t-tab-courses" class="subwindow-view space-y-5">
+  
+  <div class="subwindow-card p-6 space-y-4">
+    <!-- Header Toolbar -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-3">
+      <div>
+        <div class="flex items-center gap-2">
+          <h3 class="text-base font-black text-slate-900 tracking-tight">Permanent Enrolled Student Cohort</h3>
+          <span class="text-xs bg-blue-50 text-blue-700 font-bold font-mono px-2 py-0.5 rounded-lg border border-blue-200">Batch 2015 &bull; 15 M &bull; 9 F</span>
+        </div>
+        <p class="text-xs text-slate-500">Official student list passed from College Common Core &bull; Permanent Department Cohort.</p>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <input type="text" id="roster-search-input" onkeyup="TeacherPortal.onRosterSearch(this.value)" placeholder="Search student name or ID..." class="text-xs px-3.5 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none w-52 bg-slate-50 focus:bg-white transition">
+        <select id="teacher-roster-sec-filter" onchange="TeacherPortal.filterRosterSection(this.value)" class="text-xs font-bold px-3 py-2 rounded-xl border border-slate-300 bg-white cursor-pointer">
+          <option value="ALL">All Sections (24 Students)</option>
+          <option value="Section A">Section A (12 Students)</option>
+          <option value="Section B">Section B (12 Students)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Student Table -->
+    <div class="overflow-x-auto rounded-xl border border-slate-200 max-h-96 custom-scrollbar">
+      <table class="w-full text-left text-xs border-collapse">
+        <thead class="sticky top-0 bg-slate-100 text-slate-700 font-bold border-b border-slate-200 z-10">
+          <tr>
+            <th class="p-3">#</th>
+            <th class="p-3">Student ID</th>
+            <th class="p-3">Full Student Name</th>
+            <th class="p-3 text-center">Sex</th>
+            <th class="p-3">Section</th>
+            <th class="p-3">Program Stream</th>
+            <th class="p-3 text-center">Enrollment Status</th>
+          </tr>
+        </thead>
+        <tbody id="teacher-roster-tbody" class="divide-y divide-slate-200">
+          <!-- Dynamically populated from State.cohortStudents -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Roster Footer Note -->
+    <div class="pt-2 flex items-center justify-between text-xs text-slate-400">
+      <span>Continuous assessment tracking active &bull; Grades map 1-to-1 to Course Learning Outcomes</span>
+      <span class="font-mono font-bold text-slate-600">Total: 24 Enrolled</span>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,233 @@
+<!-- ========================================================================= -->
+<!-- MODAL: SUBMIT PROFESSIONAL CERTIFICATE / ACCREDITATION LICENSE             -->
+<!-- ========================================================================= -->
+<div id="modal-submit-certificate" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 max-w-lg w-full overflow-hidden animate-scale-up space-y-5 p-6">
+    
+    <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-lg font-bold">
+          📜
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900 text-sm">Submit Professional Certificate</h3>
+          <p class="text-[11px] text-slate-500">Official accreditation document for Academic Commission audit.</p>
+        </div>
+      </div>
+      <button type="button" onclick="TeacherPortal.closeSubmitCertificateModal()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <form onsubmit="event.preventDefault(); TeacherPortal.submitNewCertificate();" class="space-y-4 text-xs">
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">Certificate / License Title *</label>
+        <input type="text" id="new-cert-title" placeholder="e.g. Certified Operations Research Analyst (CORA)" required class="w-full font-semibold px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Issuing Authority / Body *</label>
+          <input type="text" id="new-cert-issuer" placeholder="e.g. INFORMS / IEEE / MoE" required class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Credential ID / Number</label>
+          <input type="text" id="new-cert-id" placeholder="e.g. DBU-CERT-2024-08" class="w-full font-mono font-semibold px-3 py-2 rounded-xl border border-slate-300">
+        </div>
+      </div>
+
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">Date Conferred / Issued</label>
+        <input type="date" id="new-cert-date" class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300">
+      </div>
+
+      <!-- Document File Upload Drag & Drop Area -->
+      <div class="space-y-1.5">
+        <label class="block font-bold text-slate-700">Attach Verified Document (PDF or Scan Image) *</label>
+        <label class="border-2 border-dashed border-slate-300 hover:border-blue-500 transition rounded-2xl p-5 flex flex-col items-center justify-center gap-1.5 cursor-pointer bg-slate-50 hover:bg-blue-50/30">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+          <span class="font-bold text-slate-800 text-xs">Click to browse or drag file here</span>
+          <span class="text-[10px] text-slate-400">PDF, JPG, or PNG up to 10MB</span>
+          <input type="file" id="cert-file-input" accept=".pdf,.png,.jpg,.jpeg" onchange="TeacherPortal.onCertificateFileSelected(event)" class="hidden">
+        </label>
+        <div id="cert-file-preview-badge" class="hidden p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold text-[11px] flex items-center justify-between">
+          <span id="cert-file-name-text">Document attached</span>
+          <span class="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded font-mono">Ready to upload</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
+        <button type="button" onclick="TeacherPortal.closeSubmitCertificateModal()" class="px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs transition">
+          Cancel
+        </button>
+        <button type="submit" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition flex items-center gap-1.5">
+          <span>Submit for Academic Board Audit &rarr;</span>
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- MODAL: ADD RESEARCH PUBLICATION                                            -->
+<!-- ========================================================================= -->
+<div id="modal-add-publication" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 max-w-lg w-full overflow-hidden animate-scale-up space-y-5 p-6">
+    <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center text-lg font-bold">
+          🔬
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900 text-sm">Add Scholarly Publication</h3>
+          <p class="text-[11px] text-slate-500">Indexes paper into university AI knowledge matching vector.</p>
+        </div>
+      </div>
+      <button type="button" onclick="TeacherPortal.closeAddPublicationModal()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <form onsubmit="event.preventDefault(); TeacherPortal.submitNewPublication();" class="space-y-4 text-xs">
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">Paper Title *</label>
+        <input type="text" id="new-pub-title" placeholder="e.g. Robust Optimization Algorithms for Data Science Pipelines" required class="w-full font-semibold px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Journal / Conference *</label>
+          <input type="text" id="new-pub-journal" placeholder="e.g. IEEE Access / Springer" required class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Publication Year</label>
+          <input type="number" id="new-pub-year" value="2026" class="w-full font-mono font-semibold px-3 py-2 rounded-xl border border-slate-300 text-center">
+        </div>
+      </div>
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">DOI or Reference URL</label>
+        <input type="text" id="new-pub-doi" placeholder="10.1016/j.or.2026.04" class="w-full font-mono font-semibold px-3 py-2 rounded-xl border border-slate-300">
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
+        <button type="button" onclick="TeacherPortal.closeAddPublicationModal()" class="px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs transition">
+          Cancel
+        </button>
+        <button type="submit" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition flex items-center gap-1.5">
+          <span>Add to Scholarly Dossier &rarr;</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- MODAL: FIRST-TIME & ON-DEMAND PASSWORD CHANGE                             -->
+<!-- ========================================================================= -->
+<div id="modal-change-password" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-md w-full overflow-hidden animate-scale-up space-y-5 p-6">
+    
+    <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center text-sm font-bold border border-amber-200">
+          <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+        </div>
+        <div>
+          <h3 id="pwd-modal-title" class="font-black text-slate-900 text-sm">Update Account Password</h3>
+          <p class="text-[11px] text-slate-500">Debre Berhan University Institutional SSO</p>
+        </div>
+      </div>
+      <button type="button" id="pwd-modal-close-btn" onclick="TeacherPortal.closePasswordModal()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- First-Time Login Notice -->
+    <div id="pwd-first-login-alert" class="p-3 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs space-y-1">
+      <div class="font-bold flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        <span>First-Time Login Security Setup</span>
+      </div>
+      <p class="text-[11px] text-amber-800 leading-relaxed">
+        DBU institutional security policy requires setting a personalized password upon first login before proceeding to your workspace.
+      </p>
+    </div>
+
+    <form onsubmit="event.preventDefault(); TeacherPortal.submitPasswordChange();" class="space-y-4 text-xs">
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">Current Password *</label>
+        <input type="password" id="pwd-input-current" placeholder="Enter current password" required class="w-full font-mono px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-slate-50 focus:bg-white text-slate-900">
+      </div>
+
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">New Secure Password *</label>
+        <input type="password" id="pwd-input-new" placeholder="At least 6 characters" minlength="6" required class="w-full font-mono px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-slate-50 focus:bg-white text-slate-900">
+      </div>
+
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">Confirm New Password *</label>
+        <input type="password" id="pwd-input-confirm" placeholder="Re-enter new password" minlength="6" required class="w-full font-mono px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-slate-50 focus:bg-white text-slate-900">
+      </div>
+
+      <div id="pwd-error-msg" class="hidden text-xs text-rose-600 font-bold bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+        <!-- Error message rendered here -->
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
+        <button type="button" id="pwd-cancel-btn" onclick="TeacherPortal.closePasswordModal()" class="px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs transition">
+          Cancel
+        </button>
+        <button type="submit" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition flex items-center gap-1.5">
+          <span>Save Password &amp; Continue &rarr;</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- MODAL: DEPARTMENT EXAM REVISION FEEDBACK (Send Back to Teacher)           -->
+<!-- ========================================================================= -->
+<div id="modal-exam-revision-feedback" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-lg w-full overflow-hidden animate-scale-up space-y-5 p-6">
+    <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center text-sm font-bold border border-amber-200">
+          <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
+        </div>
+        <div>
+          <h3 class="font-black text-slate-900 text-sm">Request Exam Revisions</h3>
+          <p class="text-[11px] text-slate-500">Department Moderation Committee &bull; Return Exam with Instructions</p>
+        </div>
+      </div>
+      <button type="button" onclick="TeacherPortal.closeExamRevisionModal()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <form onsubmit="event.preventDefault(); TeacherPortal.confirmSendExamBack();" class="space-y-4 text-xs">
+      <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-slate-700 space-y-1">
+        <div class="text-[11px] text-slate-400 uppercase font-bold tracking-wider">Target Course &amp; Assessment</div>
+        <div class="font-bold text-slate-900" id="revision-modal-target-exam">Stat4092: Mid Exam (15% Weight &bull; 20 Pts)</div>
+        <div class="text-[11px] text-slate-500" id="revision-modal-target-instructor">Instructor: Dr. Adimias W (PhD)</div>
+      </div>
+
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">Department Moderation Feedback &amp; Revision Notes *</label>
+        <textarea id="exam-revision-notes-input" rows="4" required
+          placeholder="e.g. Please balance Question 2 to analyze the simplex tableau instead of simple recall, and adjust the points to allocate 10 pts for CLO2..."
+          class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white text-slate-900 font-medium"></textarea>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
+        <button type="button" onclick="TeacherPortal.closeExamRevisionModal()" class="px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs transition">
+          Cancel
+        </button>
+        <button type="submit" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-md shadow-amber-600/20 transition flex items-center gap-1.5">
+          <span>Send Back to Instructor with Feedback &rarr;</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

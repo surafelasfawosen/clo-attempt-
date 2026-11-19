@@ -1,0 +1,165 @@
+<!-- ========================================================================= -->
+<!-- SCREEN 1: FACULTY HOME & ASSIGNED COURSES SELECTION VIEW                  -->
+<!-- 1. Top Section: Clean Faculty Profile (Name, Title, University only)       -->
+<!-- 2. Next Section (New Line): Assigned Course Offerings (Consistent Theme)  -->
+<!-- ========================================================================= -->
+<div id="teacher-course-selection-view" class="space-y-6">
+
+  <!-- ======================================================================= -->
+  <!-- 1. CLEAN FACULTY PROFILE (Simple, Minimal: Name, Title & University)    -->
+  <!-- ======================================================================= -->
+  <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <!-- Avatar Circle -->
+        <div onclick="TeacherPortal.openProfilePopout()" class="cursor-pointer group flex-shrink-0" title="Click to view/edit profile dossier">
+          <div id="teacher-avatar-circle" class="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xl shadow-sm group-hover:bg-blue-700 transition">
+            DA
+          </div>
+        </div>
+
+        <!-- Name, Academic Title & University Only (Clean & uncluttered) -->
+        <div class="space-y-0.5">
+          <h1 id="teacher-banner-name" onclick="TeacherPortal.openProfilePopout()" class="text-xl sm:text-2xl font-black text-slate-900 cursor-pointer hover:text-blue-600 transition">
+            Dr. Adimias W (PhD)
+          </h1>
+          <p id="teacher-banner-meta" class="text-sm text-slate-600 font-medium leading-relaxed">
+            Associate Professor &bull; Ph.D. in Operations Research &amp; Optimization &bull; Debre Berhan University
+          </p>
+        </div>
+      </div>
+
+      <!-- Simple Profile Popout Trigger -->
+      <button type="button" onclick="TeacherPortal.openProfilePopout()"
+        class="text-xs font-bold text-blue-700 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 border border-blue-200/80 px-4 py-2 rounded-xl transition cursor-pointer flex items-center gap-1.5 self-start sm:self-auto flex-shrink-0">
+        <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        <span>View / Edit Profile ↗</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 2. ASSIGNED COURSE OFFERINGS (ON A NEW LINE WITH UNIFIED BLUE THEME)     -->
+  <!-- ======================================================================= -->
+  <div class="space-y-4">
+    
+    <!-- Section Title -->
+    <div class="flex items-center justify-between pb-1">
+      <div>
+        <h2 class="text-lg font-black text-slate-900 tracking-tight flex items-center gap-2">
+          <span>Assigned Course Offerings</span>
+          <span class="text-xs font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-0.5 rounded-full">
+            2 Courses Assigned
+          </span>
+        </h2>
+        <p class="text-xs text-slate-500">
+          Select an assigned course to manage student cohorts, author exam questions, and generate reports.
+        </p>
+      </div>
+      <div class="text-xs text-slate-400 font-mono hidden md:block">
+        Continuous Cohort Tracking Active
+      </div>
+    </div>
+
+    <!-- Course Cards Grid (Consistent Blue University Theme for Both Courses) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      
+      <!-- Assigned Course 1: Stat4092 (Primary) -->
+      <div onclick="TeacherPortal.openCourse('course_stat4092')"
+        class="bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-500 transition p-6 space-y-4 shadow-xs cursor-pointer group hover:shadow-md">
+        
+        <div class="flex items-center justify-between">
+          <span class="font-mono text-xs font-black bg-blue-600 text-white px-3 py-1 rounded-lg shadow-2xs">
+            Stat4092
+          </span>
+          <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+            Year 4 &bull; Semester II
+          </span>
+        </div>
+
+        <div>
+          <h3 class="font-extrabold text-base text-slate-900 group-hover:text-blue-600 transition">
+            Operations Research and Optimization
+          </h3>
+          <p class="text-xs text-slate-500 leading-relaxed mt-1 line-clamp-2">
+            Linear programming, simplex algorithm, duality theory, transportation networks, and queuing systems.
+          </p>
+        </div>
+
+        <!-- Course Metrics -->
+        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 text-xs">
+          <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">Enrolled Cohort</span>
+            <strong id="strip-student-count" class="text-blue-700 font-mono font-bold">24 Students (Batch 2015)</strong>
+          </div>
+          <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">CLO Attainment</span>
+            <strong id="strip-attainment-rate" class="text-emerald-600 font-mono font-black">76.3% (Target Met)</strong>
+          </div>
+        </div>
+
+        <!-- Hidden context element for test sync -->
+        <span id="strip-course-code" class="hidden">Stat4092: Operations Research</span>
+
+        <!-- Action Button (Same Blue Styling) -->
+        <button type="button" onclick="event.stopPropagation(); TeacherPortal.openCourse('course_stat4092');"
+          class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition flex items-center justify-center gap-1.5 cursor-pointer">
+          <span>Open Course Studio &amp; Students &rarr;</span>
+        </button>
+      </div>
+
+      <!-- Assigned Course 2: DaSc4061 (Matching Unified Styling) -->
+      <div onclick="TeacherPortal.openCourse('course_dasc4061')"
+        class="bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-500 transition p-6 space-y-4 shadow-xs cursor-pointer group hover:shadow-md">
+        
+        <div class="flex items-center justify-between">
+          <span class="font-mono text-xs font-black bg-blue-600 text-white px-3 py-1 rounded-lg shadow-2xs">
+            DaSc4061
+          </span>
+          <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+            Year 4 &bull; Semester I
+          </span>
+        </div>
+
+        <div>
+          <h3 class="font-extrabold text-base text-slate-900 group-hover:text-blue-600 transition">
+            Introduction to Bayesian Statistics
+          </h3>
+          <p class="text-xs text-slate-500 leading-relaxed mt-1 line-clamp-2">
+            Bayesian probability theory, prior and posterior distributions, conjugate priors, and computational MCMC sampling.
+          </p>
+        </div>
+
+        <!-- Course Metrics -->
+        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 text-xs">
+          <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">Enrolled Cohort</span>
+            <strong class="text-blue-700 font-mono font-bold">24 Students (Batch 2015)</strong>
+          </div>
+          <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">CLO Attainment</span>
+            <strong class="text-emerald-600 font-mono font-black">78.5% (Target Met)</strong>
+          </div>
+        </div>
+
+        <!-- Action Button (Same Blue Styling) -->
+        <button type="button" onclick="event.stopPropagation(); TeacherPortal.openCourse('course_dasc4061');"
+          class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition flex items-center justify-center gap-1.5 cursor-pointer">
+          <span>Open Course Studio &amp; Students &rarr;</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Quick Institutional Quality Note -->
+    <div class="p-3.5 rounded-2xl bg-slate-100/80 border border-slate-200 text-xs text-slate-500 flex items-center justify-between">
+      <span class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span>Permanent student cohorts are automatically passed from College Common Core without manual file re-uploads.</span>
+      </span>
+      <span class="font-bold text-slate-700 hidden sm:inline">DBU OBE System 2026/27</span>
+    </div>
+
+  </div>
+
+</div>

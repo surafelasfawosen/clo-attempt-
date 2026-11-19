@@ -1,0 +1,174 @@
+<!-- ========================================================================= -->
+<!-- COLLEGE DEAN EXECUTIVE DASHBOARD (COLLEGE-WIDE ACCREDITATION OVERSIGHT)     -->
+<!-- High-Level Outcome Attainment & Institutional HERQA Sign-Off                -->
+<!-- ========================================================================= -->
+<div id="dean-dashboard-view" class="space-y-6 hidden">
+
+  <!-- Header Banner -->
+  <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6 space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="w-16 h-16 rounded-full bg-emerald-700 text-white flex items-center justify-center font-black text-xl shadow-sm">
+          MA
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              Dr. Mengistu A (PhD)
+            </h1>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
+              College Dean
+            </span>
+          </div>
+          <p class="text-xs text-slate-600 font-medium mt-0.5">
+            Dean, College of Computing & Technology &bull; Debre Berhan University &bull; Academic Commission
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="TeacherPortal.exportCollegeAccreditationPDF()"
+          class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          <span>Export College Accreditation Dossier (HERQA)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Executive Metrics Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100 text-xs">
+      <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">College Cohort</span>
+        <strong class="text-slate-900 font-black block mt-0.5">348 Enrolled Students</strong>
+      </div>
+      <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Active Departments</span>
+        <strong class="text-indigo-700 font-mono font-bold block mt-0.5">4 Departments</strong>
+      </div>
+      <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">College CLO Attainment</span>
+        <strong class="text-emerald-700 font-mono font-bold block mt-0.5">75.1% (Target Met)</strong>
+      </div>
+      <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Accreditation Audit</span>
+        <strong class="text-blue-700 font-mono font-bold block mt-0.5">100% HERQA Ready</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPARTMENT ACCREDITATION PERFORMANCE BREAKDOWN -->
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 space-y-4">
+    <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+      <div>
+        <h2 class="text-base font-black text-slate-900 tracking-tight">Department-Level Learning Outcome Rollup</h2>
+        <p class="text-xs text-slate-500">Official continuous evaluation results vetted by Department Heads.</p>
+      </div>
+      <span class="text-xs font-mono font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">
+        Accreditation Target: 65.0%
+      </span>
+    </div>
+
+    <!-- Table of Departments -->
+    <div class="overflow-x-auto rounded-xl border border-slate-200">
+      <table class="w-full text-left text-xs border-collapse">
+        <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+          <tr>
+            <th class="p-3">Department</th>
+            <th class="p-3">Department Head</th>
+            <th class="p-3 text-center">Active Courses</th>
+            <th class="p-3 text-center">Student Cohort</th>
+            <th class="p-3 text-center">CLO Attainment Rate</th>
+            <th class="p-3 text-center">Accreditation Status</th>
+            <th class="p-3 text-right">Action</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100 bg-white">
+          <tr class="hover:bg-slate-50 transition">
+            <td class="p-3 font-bold text-slate-900">Department of Data Science</td>
+            <td class="p-3 text-slate-600">Prof. Yared M (PhD)</td>
+            <td class="p-3 text-center font-mono">6 Offerings</td>
+            <td class="p-3 text-center font-mono">24 Students</td>
+            <td class="p-3 text-center font-mono font-bold text-emerald-700">77.4%</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ Target Met
+              </span>
+            </td>
+            <td class="p-3 text-right">
+              <button type="button" onclick="TeacherPortal.switchToRoleView('department_head')" class="text-xs font-bold text-blue-600 hover:text-blue-800 cursor-pointer">
+                Inspect Vetting &rarr;
+              </button>
+            </td>
+          </tr>
+
+          <tr class="hover:bg-slate-50 transition">
+            <td class="p-3 font-bold text-slate-900">Department of Information Systems</td>
+            <td class="p-3 text-slate-600">Dr. Almaz G (PhD)</td>
+            <td class="p-3 text-center font-mono">8 Offerings</td>
+            <td class="p-3 text-center font-mono">112 Students</td>
+            <td class="p-3 text-center font-mono font-bold text-emerald-700">75.9%</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ Target Met
+              </span>
+            </td>
+            <td class="p-3 text-right">
+              <span class="text-slate-400 text-xs">Vetted</span>
+            </td>
+          </tr>
+
+          <tr class="hover:bg-slate-50 transition">
+            <td class="p-3 font-bold text-slate-900">Department of Computer Science</td>
+            <td class="p-3 text-slate-600">Dr. Dawit A (PhD)</td>
+            <td class="p-3 text-center font-mono">12 Offerings</td>
+            <td class="p-3 text-center font-mono">130 Students</td>
+            <td class="p-3 text-center font-mono font-bold text-emerald-700">74.8%</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ Target Met
+              </span>
+            </td>
+            <td class="p-3 text-right">
+              <span class="text-slate-400 text-xs">Vetted</span>
+            </td>
+          </tr>
+
+          <tr class="hover:bg-slate-50 transition">
+            <td class="p-3 font-bold text-slate-900">Department of Software Engineering</td>
+            <td class="p-3 text-slate-600">Dr. Solomon B (PhD)</td>
+            <td class="p-3 text-center font-mono">9 Offerings</td>
+            <td class="p-3 text-center font-mono">82 Students</td>
+            <td class="p-3 text-center font-mono font-bold text-emerald-700">72.1%</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ Target Met
+              </span>
+            </td>
+            <td class="p-3 text-right">
+              <span class="text-slate-400 text-xs">Vetted</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HERQA / MoE Accreditation Certification Block -->
+  <div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-950 via-slate-900 to-blue-950 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="space-y-1">
+      <h3 class="font-bold text-sm text-white flex items-center gap-2">
+        <span>Higher Education Relevance and Quality Agency (HERQA) Audit</span>
+        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">Accredited 2026/27</span>
+      </h3>
+      <p class="text-xs text-slate-300">
+        All 4 computing departments meet the statutory threshold of &ge;65% student outcome competency.
+      </p>
+    </div>
+    <button type="button" onclick="TeacherPortal.signAccreditationPackage()"
+      class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs transition cursor-pointer shrink-0">
+      Dean Digital Signature Sign-Off &rarr;
+    </button>
+  </div>
+
+</div>
+

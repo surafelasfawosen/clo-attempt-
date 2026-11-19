@@ -1,0 +1,24 @@
+/* ==============================================================================
+   DOSSIER.CSS: Official University Syllabus Document Styling (SQC ad.docx style)
+   ============================================================================== */
+
+#printable-syllabus-document {
+  font-family: 'Times New Roman', Times, serif;
+  color: #0f172a;
+  background-color: #ffffff;
+}
+
+#printable-syllabus-document table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#printable-syllabus-document th,
+#printable-syllabus-document td {
+  border-color: #94a3b8;
+}
+
+.print-shadow-none {
+  box-shadow: none !important;
+}
+

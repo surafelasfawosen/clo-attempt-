@@ -1,0 +1,145 @@
+<!-- ========================================================================= -->
+<!-- SUB-WINDOW 4: STUDENT RESULT COLLECTION FORMAT (EXACT EXCEL FORMAT)         -->
+<!-- Matches DBU OBE 'Student Result' Sheet without separate sub-tabs           -->
+<!-- ========================================================================= -->
+<section id="t-tab-results" class="subwindow-view space-y-4 hidden">
+  <div class="subwindow-card p-4 sm:p-6 space-y-4 bg-white border border-slate-300 rounded-2xl shadow-sm">
+    
+    <!-- Clean Professional Institutional Banner -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+        
+        <!-- Left: University & Course Details -->
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-black uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200">
+              Debre Berhan University
+            </span>
+            <span class="text-xs text-slate-400 font-bold">•</span>
+            <span class="text-xs font-bold text-slate-600">College of Computing</span>
+            <span class="text-xs text-slate-400 font-bold">•</span>
+            <span id="results-header-dept" class="text-xs font-bold text-slate-700">Department of Data Science</span>
+          </div>
+          <div class="mt-1 flex items-baseline gap-2.5 flex-wrap">
+            <h2 id="results-header-course" class="text-lg font-black text-slate-900 tracking-tight">
+              Stat4092: Operations Research and Optimization
+            </h2>
+            <span id="results-header-semester" class="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
+              Year 4 • Semester II (Academic Year 2026/27)
+            </span>
+          </div>
+        </div>
+
+        <!-- Right: Professional Action Buttons -->
+        <div class="flex items-center gap-2 flex-wrap">
+          <button type="button" onclick="TeacherPortal.exportMarkSheetCSV()"
+            class="px-3.5 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-[0.98]">
+            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <span>Export CSV</span>
+          </button>
+
+          <button type="button" onclick="TeacherPortal.saveStudentResults()"
+            class="px-4 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer active:scale-[0.98]">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span>Save Marks</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Compact Controls Row: Section Select Dropdown & Search -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+        
+        <!-- Section Dropdown Select -->
+        <div class="flex items-center gap-2">
+          <label for="results-section-filter" class="text-xs font-bold text-slate-700 whitespace-nowrap">Section:</label>
+          <div class="relative">
+            <select id="results-section-filter" onchange="TeacherPortal.onResultsSectionFilter(this.value)"
+              class="appearance-none pl-3 pr-8 py-1.5 rounded-xl border border-slate-300 bg-white text-xs font-bold text-slate-800 hover:border-slate-400 focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-2xs cursor-pointer">
+              <option value="Section A" selected>Section A (12 Students)</option>
+              <option value="Section B">Section B (12 Students)</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search student in section -->
+        <div class="w-full sm:w-64">
+          <div class="relative">
+            <input type="text" id="results-search-input" onkeyup="TeacherPortal.onResultsSearch(this.value)"
+              placeholder="Search student name or ID..."
+              class="w-full pl-8 pr-3 py-1.5 rounded-xl border border-slate-300 bg-white text-xs text-slate-800 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-2xs">
+            <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Horizontal Assessment Tabs (No Emojis) -->
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap">
+        <div class="flex items-center gap-1 overflow-x-auto p-1 bg-slate-100/90 rounded-xl border border-slate-200 text-xs">
+          <button type="button" id="btn-asst-tab-full" onclick="TeacherPortal.selectResultsTab('full')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-blue-600 text-white shadow-xs">
+            Full Sheet
+          </button>
+          <button type="button" id="btn-asst-tab-mid" onclick="TeacherPortal.selectResultsTab('mid')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-slate-700 hover:bg-slate-200">
+            Mid Exam [15%]
+          </button>
+          <button type="button" id="btn-asst-tab-lab" onclick="TeacherPortal.selectResultsTab('lab')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-slate-700 hover:bg-slate-200">
+            Assignment / Lab [15%]
+          </button>
+          <button type="button" id="btn-asst-tab-project" onclick="TeacherPortal.selectResultsTab('project')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-slate-700 hover:bg-slate-200">
+            Project / Quiz [30%]
+          </button>
+          <button type="button" id="btn-asst-tab-final" onclick="TeacherPortal.selectResultsTab('final')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-slate-700 hover:bg-slate-200">
+            Final Exam [40%]
+          </button>
+          <button type="button" id="btn-asst-tab-total" onclick="TeacherPortal.selectResultsTab('total')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-slate-700 hover:bg-slate-200">
+            Total &amp; Grades [100%]
+          </button>
+        </div>
+
+        <div id="results-tab-clo-badge" class="text-xs text-slate-600 font-medium">
+          Active Course Assessment Matrix (Only mapped CLOs displayed)
+        </div>
+      </div>
+    </div>
+
+    <!-- The Full Multi-Assessment Grid Container (Matching Image) -->
+    <div id="teacher-results-table-container" class="overflow-x-auto rounded-xl border border-slate-300 max-h-[580px] custom-scrollbar shadow-inner bg-white">
+      <!-- Populated dynamically by TeacherPortal.renderResultsTable() -->
+    </div>
+
+    <!-- Compatibility hidden elements -->
+    <div class="hidden" aria-hidden="true">
+      <span id="results-stat-course">Stat4092: Operations Research</span>
+      <span id="results-stat-cohort">12 Students</span>
+      <span id="results-stat-asst-avg">51.4 / 60.0 (85.7%)</span>
+      <span id="results-stat-avg">76.8 / 100.0 (Target Met)</span>
+      <button id="btn-section-tab-a" onclick="TeacherPortal.onResultsSectionFilter('Section A')"></button>
+      <button id="btn-section-tab-b" onclick="TeacherPortal.onResultsSectionFilter('Section B')"></button>
+      <button id="btn-results-view-asst" onclick="TeacherPortal.switchResultsViewMode('assessment')"></button>
+      <button id="btn-results-view-clo" onclick="TeacherPortal.switchResultsViewMode('clo')"></button>
+      <span id="results-stat-pass">23 / 24 (95.8%)</span>
+      <span id="results-stat-instrument">Full Multi-Assessment Sheet</span>
+      <span id="results-stat-clos">CLO1 - CLO8</span>
+      <span id="results-badge-asst">All Assessments Active</span>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span>Continuous marks entered into Mid Exam [15%], Lab Exam [15%], Project [30%], and Final Exam [40%] calculate CLO attainment in real-time.</span>
+      </span>
+      <span class="font-mono text-slate-400 font-bold">100% Excel Template Faithful</span>
+    </div>
+
+  </div>
+</section>

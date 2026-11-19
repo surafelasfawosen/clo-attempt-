@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debre Berhan University &bull; OBE Outcome &amp; Accreditation Enterprise Portal</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js for High-Fidelity Interactive Plots -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Modular Enterprise Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/studio.css">
+  <link rel="stylesheet" href="css/teacher.css">
+  <link rel="stylesheet" href="css/dossier.css">
+  <link rel="stylesheet" href="css/print.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="h-full flex overflow-hidden text-slate-800 antialiased flex-col">
+
+  <!-- ========================================================================= -->
+  <!-- DEDICATED INSTITUTIONAL PORTAL LOGIN SCREEN                               -->
+  <!-- ========================================================================= -->
+  {% include "teacher/login_screen.html" %}
+
+  <!-- ========================================================================= -->
+  <!-- WORKSPACE 1: FACULTY / DEPT HEAD / DEAN DASHBOARD CONTAINER              -->
+  <!-- ========================================================================= -->
+  <div id="teacher-dashboard-screen" class="h-full flex flex-1 overflow-hidden text-slate-800 antialiased flex-col">
+    <!-- Top Modern Header & Active Role Switcher -->
+    {% include "teacher/header.html" %}
+
+    <!-- Main Workspace -->
+    <main class="flex-1 flex flex-col min-w-0 bg-slate-50 overflow-y-auto custom-scrollbar p-6 space-y-6">
+      <div class="max-w-6xl mx-auto w-full space-y-6">
+        <!-- Faculty Home (Profile & Assigned Courses) -->
+        {% include "teacher/profile_banner.html" %}
+
+        <!-- Department Head Dashboard -->
+        {% include "teacher/depthead_view.html" %}
+
+        <!-- College Dean Dashboard -->
+        {% include "teacher/dean_view.html" %}
+
+        <!-- Course Studio Workspace -->
+        <div id="teacher-course-workspace" class="space-y-6 hidden">
+          <!-- Top Course Navigation Bar -->
+          <div class="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-2xs flex flex-wrap justify-between items-center gap-4 no-print">
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="TeacherPortal.closeCourse()" class="text-xs font-bold text-slate-600 hover:text-blue-600 flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-xl transition cursor-pointer">
+                <span>&larr; Back to My Courses</span>
+              </button>
+              <div class="h-5 w-px bg-slate-200 hidden sm:block"></div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="active-course-code-badge" class="font-mono text-xs font-black bg-blue-600 text-white px-2.5 py-0.5 rounded-lg shadow-2xs">Stat4092</span>
+                  <h2 id="active-course-title-heading" class="text-base font-black text-slate-900 tracking-tight">Operations Research and Optimization</h2>
+                </div>
+                <p id="active-course-stream-badge" class="text-[11px] text-slate-500 font-medium">B.Sc in Data Science &bull; Year 4 &bull; Semester II</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <select id="teacher-course-picker" onchange="TeacherPortal.onActiveCourseChange(this.value)" class="text-xs font-bold px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
+              </select>
+              <span id="active-course-student-count" class="text-xs font-mono font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-lg border border-blue-200">24 Students</span>
+              <p id="active-course-desc" class="hidden">Operations Research</p>
+            </div>
+          </div>
+
+          <!-- Horizontal Sub-Task Bar -->
+          {% include "teacher/tabs_bar.html" %}
+
+          <!-- Sub-Window 1: Assigned Courses & Roster -->
+          {% include "teacher/tab_courses.html" %}
+
+          <!-- Sub-Window 2: Exam & Question Studio -->
+          {% include "teacher/tab_authoring.html" %}
+
+          <!-- Sub-Window 3: Official CLO Attainment Report & Dashboard -->
+          {% include "teacher/tab_report.html" %}
+
+          <!-- Sub-Window 4: Student Result Collection & Mark Entry (Exact Excel Format) -->
+          {% include "teacher/tab_results.html" %}
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- WORKSPACE 2: SUPER ADMIN CURRICULUM & SENATE STUDIO                      -->
+  <!-- ========================================================================= -->
+  <div id="admin-curriculum-workspace" class="h-full flex flex-1 overflow-hidden hidden">
+    <!-- Vertical Taskbar Navigation -->
+    {% include "layout/sidebar.html" %}
+
+    <!-- Main Workspace -->
+    <main class="flex-1 flex flex-col min-w-0 bg-slate-50 overflow-hidden">
+      <!-- Top Dynamic Header & Breadcrumb -->
+      {% include "layout/header.html" %}
+
+      <!-- Scrollable Stage Content Container -->
+      <div class="flex-1 overflow-y-auto p-6 custom-scrollbar">
+        <!-- Stage 1: Colleges -->
+        {% include "stages/1_colleges.html" %}
+
+        <!-- Stage 1.5: Freshman Academic & Placement Hub -->
+        {% include "stages/freshman_hub.html" %}
+
+        <!-- Stage 2: Departments -->
+        {% include "stages/2_departments.html" %}
+
+        <!-- Stage 3: Chronological Courses List -->
+        {% include "stages/3_courses.html" %}
+
+        <!-- Stage 4: Course Studio -->
+        <section id="stage-course-studio" class="max-w-5xl mx-auto space-y-5 hidden">
+          {% include "stages/4_studio/header.html" %}
+          {% include "stages/4_studio/tabs_bar.html" %}
+          {% include "stages/4_studio/tab_spec.html" %}
+          {% include "stages/4_studio/tab_chapters.html" %}
+          {% include "stages/4_studio/tab_clos.html" %}
+          {% include "stages/4_studio/tab_blueprint.html" %}
+          {% include "stages/4_studio/tab_dossier.html" %}
+        </section>
+
+        <!-- Stage 5: Course Staffing & Student Assignments Studio -->
+        {% include "stages/5_assignments.html" %}
+      </div>
+    </main>
+  </div>
+
+  <!-- Dialog Modals for Curriculum Studio -->
+  {% include "modals/college_modal.html" %}
+  {% include "modals/department_modal.html" %}
+  {% include "modals/course_modal.html" %}
+  {% include "modals/plo_modal.html" %}
+  {% include "modals/instructor_modal.html" %}
+
+  <!-- Modals for Teacher Portal & Security -->
+  {% include "teacher/tab_profile.html" %}
+  {% include "teacher/modals.html" %}
+
+  <!-- Toast Notification -->
+  {% include "components/toast.html" %}
+
+  <!-- JavaScript Components & Bootstrapper -->
+  {% include "components/scripts.html" %}
+  <script src="js/teacher_portal.js?v=6.0"></script>
+  <script>
+    function openCourse(id) {
+      if (window.TeacherPortal && window.TeacherPortal.openCourse) {
+        window.TeacherPortal.openCourse(id);
+      }
+    }
+    function closeCourse() {
+      if (window.TeacherPortal && window.TeacherPortal.closeCourse) {
+        window.TeacherPortal.closeCourse();
+      }
+    }
+  </script>
+</body>
+</html>

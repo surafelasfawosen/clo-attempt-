@@ -1,0 +1,66 @@
+/* ==============================================================================
+   PRINT.CSS: Print Optimizations for Official University Syllabus (PDF & Paper)
+   ============================================================================== */
+
+@media print {
+  /* Hide all UI elements, sidebars, buttons, toolbars, and alerts */
+  aside,
+  header,
+  #header-actions,
+  .no-print,
+  button,
+  #toast,
+  #connection-error-banner,
+  #breadcrumb-bar,
+  #studio-edit-actions,
+  #studio-view-actions,
+  #studio-edit-tabs-bar {
+    display: none !important;
+  }
+
+  /* Reset body and containers to pure white canvas */
+  body,
+  main,
+  #stage-course-studio,
+  #tab-content-view {
+    background: white !important;
+    overflow: visible !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Hide inactive stages and editing tabs */
+  #stage-colleges,
+  #stage-departments,
+  #stage-courses,
+  #tab-content-spec,
+  #tab-content-chapters,
+  #tab-content-clos,
+  #tab-content-blueprint {
+    display: none !important;
+  }
+
+  /* Ensure syllabus container is visible */
+  #stage-course-studio,
+  #tab-content-view {
+    display: block !important;
+  }
+
+  #printable-syllabus-document {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .print-shadow-none {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}
+

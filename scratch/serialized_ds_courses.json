@@ -1,0 +1,930 @@
+[
+  {
+    "id": "course_stat4092",
+    "code": "Stat4092",
+    "title": "Operations Research and Optimization",
+    "department_id": "dept_data_science",
+    "academic_year": "Year 4",
+    "semester": "Semester II",
+    "stream": "Common",
+    "credit_hours": 3,
+    "lecture_hours": 40,
+    "lab_hours": 20,
+    "tutorial_hours": 15,
+    "prerequisites": "Basic knowledge of calculus, linear algebra, python",
+    "description": "This course provides a comprehensive introduction to Operations Research (OR) and optimization techniques within the context of Data Science. Students will learn how to formulate and solve complex decision-making problems, optimize processes, and apply mathematical models to real-world data-driven scenarios. Covers: Linear programming (Algebraic and Simplex methods); Sensitivity analysis; Duality theory; Transportation problem; Queuing Theory; Game Theory; Classical Optimization Techniques.",
+    "course_aims": "Enable students to apply linear programming, transportation algorithms, queuing systems, game theory, and classical optimization methods to solve complex industrial and data science problems.",
+    "instructor_name": "Dr. Adimias W (PhD)",
+    "status": "Published",
+    "direct_weight_pct": 80.0,
+    "indirect_weight_pct": 20.0,
+    "program_name": "B.Sc in Data Science",
+    "course_category": "Core",
+    "independent_hours": 30,
+    "assessment_hours": 15,
+    "total_notional_hours": 120,
+    "corequisites": "None",
+    "textbooks": "Taha, H.A. (2006). Operations Research: An Introduction (8th edition). Prentice-Hall, India, New Delhi.",
+    "reference_books": "Carter, M.W. and Price, C.C. (2000). Operations Research: A Practical Introduction CRC.\nRavindran, A., Phillips, D.T. and Solberg, J.J. (1987). Operations Research: Principles and Practice. (2nd edition). Wiley.\nND Vohra, Quantitative Techniques in Management, Tata McGraw Hill, 4th Edition, 2011.\nJ. K. Sharma, Operations Research Theory and Applications, Macmillan, 5th Edition, 2012.\nHiller F.S, Liberman G.J, Introduction to Operations Research, 10th Edition McGraw Hill, 2017.\nRavindran A., Philip D.T., and Solberg J.J., Operations Research, John Wiley, 2nd Edition 2007.",
+    "teaching_strategy": "The main teaching method will be Lecture, Problem-based learning (PBL), Lab sessions, individual and group assignments, and cooperative learning supported by tutorial sessions. The students will be expected to perform presentations and self-learning exercises on operations research.",
+    "clos": [
+      {
+        "id": "stat4092_clo1",
+        "code": "CLO1",
+        "description": "Explain the fundamentals of operations research (OR) and optimization techniques.",
+        "blooms_level": "Understanding",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture, Problem-based learning (PBL), Lab sessions & Python Solver",
+        "assessment_methods": "Assignments (Optimization Problems), In-class Quizzes, Midterm Examination, Comprehensive Final Examination",
+        "plo_mappings": [
+          {
+            "plo_id": "plo1",
+            "correlation_weight": 2
+          }
+        ]
+      },
+      {
+        "id": "stat4092_clo2",
+        "code": "CLO2",
+        "description": "Apply linear programming techniques to optimize resources.",
+        "blooms_level": "Applying",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture, Problem-based learning (PBL), Lab sessions & Python Solver",
+        "assessment_methods": "Assignments (Optimization Problems), Midterm Examination, Comprehensive Final Examination",
+        "plo_mappings": [
+          {
+            "plo_id": "plo1",
+            "correlation_weight": 2
+          },
+          {
+            "plo_id": "plo2",
+            "correlation_weight": 2
+          }
+        ]
+      },
+      {
+        "id": "stat4092_clo3",
+        "code": "CLO3",
+        "description": "Analyze problems under the general class of transportation problems.",
+        "blooms_level": "Analyzing",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture, Problem-based learning (PBL), Lab sessions & Python Solver",
+        "assessment_methods": "Midterm Examination, Comprehensive Final Examination",
+        "plo_mappings": [
+          {
+            "plo_id": "plo2",
+            "correlation_weight": 2
+          },
+          {
+            "plo_id": "plo3",
+            "correlation_weight": 2
+          }
+        ]
+      },
+      {
+        "id": "stat4092_clo4",
+        "code": "CLO4",
+        "description": "Analyze the queuing model for effective customer satisfaction.",
+        "blooms_level": "Analyzing",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture, Problem-based learning (PBL), Lab sessions & Python Solver",
+        "assessment_methods": "Comprehensive Final Examination",
+        "plo_mappings": [
+          {
+            "plo_id": "plo3",
+            "correlation_weight": 2
+          }
+        ]
+      },
+      {
+        "id": "stat4092_clo5",
+        "code": "CLO5",
+        "description": "Describe the basic concepts of decision making under competitive situations (Game Theory).",
+        "blooms_level": "Understanding",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture, Problem-based learning (PBL), Lab sessions & Python Solver",
+        "assessment_methods": "In-class Quizzes, Comprehensive Final Examination",
+        "plo_mappings": [
+          {
+            "plo_id": "plo4",
+            "correlation_weight": 2
+          }
+        ]
+      },
+      {
+        "id": "stat4092_clo6",
+        "code": "CLO6",
+        "description": "Apply classical optimization techniques to optimize complex systems.",
+        "blooms_level": "Applying",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture, Problem-based learning (PBL), Lab sessions & Python Solver",
+        "assessment_methods": "Comprehensive Final Examination",
+        "plo_mappings": [
+          {
+            "plo_id": "plo5",
+            "correlation_weight": 2
+          }
+        ]
+      }
+    ],
+    "chapters": [
+      {
+        "id": "stat4092_ch_1",
+        "chapter_number": 1,
+        "title": "Chapter 1: Introduction",
+        "content": "Meaning of OR, General nature of OR, Major phases of an OR project, Classification of problems in OR, Structure of OR mathematical models.",
+        "mapped_clos": "CLO1",
+        "teaching_methods": "Lecture, Tutorial"
+      },
+      {
+        "id": "stat4092_ch_2",
+        "chapter_number": 2,
+        "title": "Chapter 2: Linear Programming",
+        "content": "Linear Programming problem (LPP), Graphical method of solution of LPPs with two variables, Simplex method of solution of LPPs, Tableau Form: The general case, Greater than or equal to constraints, Equality Constraints, Eliminating negative right hand side values; Solving a minimization problem, Special Cases: Infeasibility, Unboundedness, Alternative optimal solutions, Degeneracy, Duality in LP. Lab contents: Apply Excel Solver, Python to solve Linear Programming.",
+        "mapped_clos": "CLO2",
+        "teaching_methods": "Lecture, Tutorial, hands-on activity using optimization tools and software"
+      },
+      {
+        "id": "stat4092_ch_3",
+        "chapter_number": 3,
+        "title": "Chapter 3: Transportation Problem",
+        "content": "General linear programming model of the transportation problem; Balancing transportation tableau; Starting basic solutions (north \u2013 west corner method, least cost method, VAM); Optimality test; Transportation algorithm; degeneracy, perturbation a degenerate basic feasible solution. Lab contents: Illustrate all transportation problem techniques in python.",
+        "mapped_clos": "CLO3",
+        "teaching_methods": "Lecture, interactive discussions, Tutorial"
+      },
+      {
+        "id": "stat4092_ch_4",
+        "chapter_number": 4,
+        "title": "Chapter 4: Queuing Theory",
+        "content": "Structure of waiting line system: The single channel waiting line, The process of arrivals, The distributions of service times, Queue discipline, Steady state operation; Single channel Waiting Line Model With Poison Arrival and Exponential Service Time; Multiple Channel Waiting Line Model with Poison Arrival and Exponential Service Times: Operating Characteristics and Their Interpretation.",
+        "mapped_clos": "CLO4",
+        "teaching_methods": "Lecture, Tutorial, interactive discussions"
+      },
+      {
+        "id": "stat4092_ch_5",
+        "chapter_number": 5,
+        "title": "Chapter 5: Introduction to Game Theory",
+        "content": "Introduction; Definitions of some common terms; Two person zero sum games; Maximin-Minimax Principle; Games without saddle points-Mixed strategies; Reducing the game problem to LPP; Fundamental theorem of games.",
+        "mapped_clos": "CLO5",
+        "teaching_methods": "Lecture, Tutorial"
+      },
+      {
+        "id": "stat4092_ch_6",
+        "chapter_number": 6,
+        "title": "Chapter 6: Introduction to Classical Optimization Techniques",
+        "content": "Unconstrained problems, Necessary and sufficient conditions, Newton Raphson method; Constrained problems, Equality constraints - Kuhn-Tucker conditions. Lab contents: apply Optimization Techniques in python.",
+        "mapped_clos": "CLO6",
+        "teaching_methods": "Lecture, interactive discussions, hands-on activity"
+      }
+    ],
+    "assessments": [
+      {
+        "id": "stat4092_asm1",
+        "name": "Assignments (Optimization Problems)",
+        "assessment_type": "Assignment",
+        "total_marks": 20.0,
+        "course_weight_pct": 20.0,
+        "clo_allocations": [
+          {
+            "clo_id": "stat4092_clo1",
+            "allocated_marks": 5.0
+          },
+          {
+            "clo_id": "stat4092_clo2",
+            "allocated_marks": 5.0
+          }
+        ]
+      },
+      {
+        "id": "stat4092_asm2",
+        "name": "In-class Quizzes",
+        "assessment_type": "Quiz",
+        "total_marks": 15.0,
+        "course_weight_pct": 15.0,
+        "clo_allocations": [
+          {
+            "clo_id": "stat4092_clo1",
+            "allocated_marks": 8.0
+          },
+          {
+            "clo_id": "stat4092_clo5",
+            "allocated_marks": 7.0
+          }
+        ]
+      },
+      {
+        "id": "stat4092_asm3",
+        "name": "Midterm Examination",
+        "assessment_type": "Midterm_Exam",
+        "total_marks": 15.0,
+        "course_weight_pct": 15.0,
+        "clo_allocations": [
+          {
+            "clo_id": "stat4092_clo1",
+            "allocated_marks": 5.0
+          },
+          {
+            "clo_id": "stat4092_clo2",
+            "allocated_marks": 5.0
+          },
+          {
+            "clo_id": "stat4092_clo3",
+            "allocated_marks": 5.0
+          }
+        ]
+      },
+      {
+        "id": "stat4092_asm4",
+        "name": "Comprehensive Final Examination",
+        "assessment_type": "Final_Exam",
+        "total_marks": 50.0,
+        "course_weight_pct": 50.0,
+        "clo_allocations": [
+          {
+            "clo_id": "stat4092_clo2",
+            "allocated_marks": 41.0
+          },
+          {
+            "clo_id": "stat4092_clo3",
+            "allocated_marks": 10.0
+          },
+          {
+            "clo_id": "stat4092_clo4",
+            "allocated_marks": 10.0
+          },
+          {
+            "clo_id": "stat4092_clo5",
+            "allocated_marks": 10.0
+          },
+          {
+            "clo_id": "stat4092_clo6",
+            "allocated_marks": 10.0
+          },
+          {
+            "clo_id": "stat4092_clo1",
+            "allocated_marks": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course_cosc1012",
+    "code": "CoSc1012",
+    "title": "Computer Programming I",
+    "department_id": "dept_data_science",
+    "academic_year": "Year 1",
+    "semester": "Semester I",
+    "stream": "Common",
+    "credit_hours": 3,
+    "lecture_hours": 3,
+    "lab_hours": 2,
+    "tutorial_hours": 0,
+    "prerequisites": "Department Prerequisites",
+    "description": "Foundational programming principles, algorithms, control structures, data structures, and problem-solving using C++ / Python.",
+    "course_aims": "Provide essential competence in accordance with the national curriculum.",
+    "instructor_name": "Department Academic Staff",
+    "status": "Published",
+    "direct_weight_pct": 80.0,
+    "indirect_weight_pct": 20.0,
+    "program_name": "B.Sc in Data Science",
+    "course_category": "Core",
+    "independent_hours": 30,
+    "assessment_hours": 15,
+    "total_notional_hours": 120,
+    "corequisites": "None",
+    "textbooks": "",
+    "reference_books": "",
+    "teaching_strategy": "",
+    "clos": [
+      {
+        "id": "course_cosc1012_clo_1",
+        "code": "CLO1",
+        "description": "Explain procedural programming paradigms, memory allocation, and basic algorithms.",
+        "blooms_level": "Understanding",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_cosc1012_clo_2",
+        "code": "CLO2",
+        "description": "Develop and debug structured programs applying conditional logic and loops.",
+        "blooms_level": "Applying",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_cosc1012_clo_3",
+        "code": "CLO3",
+        "description": "Implement modular functions, parameter passing, and array manipulations.",
+        "blooms_level": "Applying",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      }
+    ],
+    "chapters": [],
+    "assessments": [
+      {
+        "id": "course_cosc1012_mid",
+        "name": "Midterm Exam",
+        "assessment_type": "Midterm_Exam",
+        "total_marks": 30.0,
+        "course_weight_pct": 30.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_cosc1012_assign",
+        "name": "Assignments & Labs",
+        "assessment_type": "Assignment",
+        "total_marks": 20.0,
+        "course_weight_pct": 20.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_cosc1012_fin",
+        "name": "Final Examination",
+        "assessment_type": "Final_Exam",
+        "total_marks": 50.0,
+        "course_weight_pct": 50.0,
+        "clo_allocations": []
+      }
+    ]
+  },
+  {
+    "id": "course_math2021",
+    "code": "Math2021",
+    "title": "Calculus for Data Science",
+    "department_id": "dept_data_science",
+    "academic_year": "Year 1",
+    "semester": "Semester II",
+    "stream": "Common",
+    "credit_hours": 3,
+    "lecture_hours": 3,
+    "lab_hours": 2,
+    "tutorial_hours": 0,
+    "prerequisites": "Department Prerequisites",
+    "description": "Differential and integral calculus with specific applications to continuous data models, rates of change, and gradient methods.",
+    "course_aims": "Provide essential competence in accordance with the national curriculum.",
+    "instructor_name": "Department Academic Staff",
+    "status": "Published",
+    "direct_weight_pct": 80.0,
+    "indirect_weight_pct": 20.0,
+    "program_name": "B.Sc in Data Science",
+    "course_category": "Core",
+    "independent_hours": 30,
+    "assessment_hours": 15,
+    "total_notional_hours": 120,
+    "corequisites": "None",
+    "textbooks": "",
+    "reference_books": "",
+    "teaching_strategy": "",
+    "clos": [
+      {
+        "id": "course_math2021_clo_1",
+        "code": "CLO1",
+        "description": "Understand limits, continuity, and differentiation of single and multivariable functions.",
+        "blooms_level": "Understanding",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_math2021_clo_2",
+        "code": "CLO2",
+        "description": "Compute partial derivatives and gradients used in optimization algorithms.",
+        "blooms_level": "Applying",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_math2021_clo_3",
+        "code": "CLO3",
+        "description": "Evaluate definite and improper integrals in probability density calculations.",
+        "blooms_level": "Evaluating",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      }
+    ],
+    "chapters": [],
+    "assessments": [
+      {
+        "id": "course_math2021_mid",
+        "name": "Midterm Exam",
+        "assessment_type": "Midterm_Exam",
+        "total_marks": 30.0,
+        "course_weight_pct": 30.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_math2021_assign",
+        "name": "Assignments & Labs",
+        "assessment_type": "Assignment",
+        "total_marks": 20.0,
+        "course_weight_pct": 20.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_math2021_fin",
+        "name": "Final Examination",
+        "assessment_type": "Final_Exam",
+        "total_marks": 50.0,
+        "course_weight_pct": 50.0,
+        "clo_allocations": []
+      }
+    ]
+  },
+  {
+    "id": "course_math2031",
+    "code": "Math2031",
+    "title": "Linear Algebra I",
+    "department_id": "dept_data_science",
+    "academic_year": "Year 2",
+    "semester": "Semester I",
+    "stream": "Common",
+    "credit_hours": 3,
+    "lecture_hours": 3,
+    "lab_hours": 2,
+    "tutorial_hours": 0,
+    "prerequisites": "Department Prerequisites",
+    "description": "Vector spaces, matrices, determinants, systems of linear equations, eigenvalues, eigenvectors, and singular value decomposition.",
+    "course_aims": "Provide essential competence in accordance with the national curriculum.",
+    "instructor_name": "Department Academic Staff",
+    "status": "Published",
+    "direct_weight_pct": 80.0,
+    "indirect_weight_pct": 20.0,
+    "program_name": "B.Sc in Data Science",
+    "course_category": "Core",
+    "independent_hours": 30,
+    "assessment_hours": 15,
+    "total_notional_hours": 120,
+    "corequisites": "None",
+    "textbooks": "",
+    "reference_books": "",
+    "teaching_strategy": "",
+    "clos": [
+      {
+        "id": "course_math2031_clo_1",
+        "code": "CLO1",
+        "description": "Solve systems of linear equations using Gaussian elimination and matrix inverses.",
+        "blooms_level": "Applying",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_math2031_clo_2",
+        "code": "CLO2",
+        "description": "Analyze linear transformations, vector subspaces, bases, and dimensions.",
+        "blooms_level": "Analyzing",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_math2031_clo_3",
+        "code": "CLO3",
+        "description": "Compute eigenvalues, eigenvectors, and spectral decompositions for dimensionality reduction.",
+        "blooms_level": "Analyzing",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      }
+    ],
+    "chapters": [],
+    "assessments": [
+      {
+        "id": "course_math2031_mid",
+        "name": "Midterm Exam",
+        "assessment_type": "Midterm_Exam",
+        "total_marks": 30.0,
+        "course_weight_pct": 30.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_math2031_assign",
+        "name": "Assignments & Labs",
+        "assessment_type": "Assignment",
+        "total_marks": 20.0,
+        "course_weight_pct": 20.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_math2031_fin",
+        "name": "Final Examination",
+        "assessment_type": "Final_Exam",
+        "total_marks": 50.0,
+        "course_weight_pct": 50.0,
+        "clo_allocations": []
+      }
+    ]
+  },
+  {
+    "id": "course_dasc2021",
+    "code": "DaSc2021",
+    "title": "Introduction to Data Science",
+    "department_id": "dept_data_science",
+    "academic_year": "Year 2",
+    "semester": "Semester II",
+    "stream": "Common",
+    "credit_hours": 3,
+    "lecture_hours": 3,
+    "lab_hours": 2,
+    "tutorial_hours": 0,
+    "prerequisites": "Department Prerequisites",
+    "description": "Overview of the data science lifecycle: data acquisition, exploratory data analysis, data wrangling, visualization, and basic modeling.",
+    "course_aims": "Provide essential competence in accordance with the national curriculum.",
+    "instructor_name": "Department Academic Staff",
+    "status": "Published",
+    "direct_weight_pct": 80.0,
+    "indirect_weight_pct": 20.0,
+    "program_name": "B.Sc in Data Science",
+    "course_category": "Core",
+    "independent_hours": 30,
+    "assessment_hours": 15,
+    "total_notional_hours": 120,
+    "corequisites": "None",
+    "textbooks": "",
+    "reference_books": "",
+    "teaching_strategy": "",
+    "clos": [
+      {
+        "id": "course_dasc2021_clo_1",
+        "code": "CLO1",
+        "description": "Describe the stages of data science lifecycle and ethical responsibilities.",
+        "blooms_level": "Understanding",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_dasc2021_clo_2",
+        "code": "CLO2",
+        "description": "Perform data cleaning, imputation, and feature transformations using pandas and numpy.",
+        "blooms_level": "Applying",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_dasc2021_clo_3",
+        "code": "CLO3",
+        "description": "Create communicative statistical visualizations to extract patterns from raw data.",
+        "blooms_level": "Creating",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      }
+    ],
+    "chapters": [],
+    "assessments": [
+      {
+        "id": "course_dasc2021_mid",
+        "name": "Midterm Exam",
+        "assessment_type": "Midterm_Exam",
+        "total_marks": 30.0,
+        "course_weight_pct": 30.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_dasc2021_assign",
+        "name": "Assignments & Labs",
+        "assessment_type": "Assignment",
+        "total_marks": 20.0,
+        "course_weight_pct": 20.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_dasc2021_fin",
+        "name": "Final Examination",
+        "assessment_type": "Final_Exam",
+        "total_marks": 50.0,
+        "course_weight_pct": 50.0,
+        "clo_allocations": []
+      }
+    ]
+  },
+  {
+    "id": "course_dasc4061",
+    "code": "DaSc4061",
+    "title": "Introduction to Bayesian Statistics",
+    "department_id": "dept_data_science",
+    "academic_year": "Year 4",
+    "semester": "Semester I",
+    "stream": "Common",
+    "credit_hours": 3,
+    "lecture_hours": 3,
+    "lab_hours": 2,
+    "tutorial_hours": 0,
+    "prerequisites": "Department Prerequisites",
+    "description": "Bayesian probability theory, prior and posterior distributions, conjugate priors, MCMC sampling, and Bayesian inference for data science.",
+    "course_aims": "Provide essential competence in accordance with the national curriculum.",
+    "instructor_name": "Department Academic Staff",
+    "status": "Published",
+    "direct_weight_pct": 80.0,
+    "indirect_weight_pct": 20.0,
+    "program_name": "B.Sc in Data Science",
+    "course_category": "Core",
+    "independent_hours": 30,
+    "assessment_hours": 15,
+    "total_notional_hours": 120,
+    "corequisites": "None",
+    "textbooks": "",
+    "reference_books": "",
+    "teaching_strategy": "",
+    "clos": [
+      {
+        "id": "course_dasc4061_clo_1",
+        "code": "CLO1",
+        "description": "Formulate Bayes theorem and interpret prior vs. posterior probabilistic beliefs.",
+        "blooms_level": "Understanding",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_dasc4061_clo_2",
+        "code": "CLO2",
+        "description": "Apply conjugate priors to analytical posterior inference problems.",
+        "blooms_level": "Applying",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "course_dasc4061_clo_3",
+        "code": "CLO3",
+        "description": "Construct Markov Chain Monte Carlo (MCMC) computational sampling models.",
+        "blooms_level": "Creating",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Laboratory Sessions",
+        "assessment_methods": "",
+        "plo_mappings": []
+      }
+    ],
+    "chapters": [],
+    "assessments": [
+      {
+        "id": "course_dasc4061_mid",
+        "name": "Midterm Exam",
+        "assessment_type": "Midterm_Exam",
+        "total_marks": 30.0,
+        "course_weight_pct": 30.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_dasc4061_assign",
+        "name": "Assignments & Labs",
+        "assessment_type": "Assignment",
+        "total_marks": 20.0,
+        "course_weight_pct": 20.0,
+        "clo_allocations": []
+      },
+      {
+        "id": "course_dasc4061_fin",
+        "name": "Final Examination",
+        "assessment_type": "Final_Exam",
+        "total_marks": 50.0,
+        "course_weight_pct": 50.0,
+        "clo_allocations": []
+      }
+    ]
+  },
+  {
+    "id": "course_ds302",
+    "code": "DS302",
+    "title": "Machine Learning for Data Science",
+    "department_id": "dept_data_science",
+    "academic_year": "Year 3",
+    "semester": "Semester I",
+    "stream": "Common",
+    "credit_hours": 4,
+    "lecture_hours": 40,
+    "lab_hours": 20,
+    "tutorial_hours": 15,
+    "prerequisites": "Linear Algebra (Math2031), Calculus (Math2021), Python (CoSc1012)",
+    "description": "Supervised, unsupervised, and deep learning paradigms with practical Python pipelines, model evaluation, and diagnostics.",
+    "course_aims": "Equip students with theoretical and applied mastery of machine learning algorithms.",
+    "instructor_name": "Dr. Selamawit Tadesse (PhD)",
+    "status": "Published",
+    "direct_weight_pct": 80.0,
+    "indirect_weight_pct": 20.0,
+    "program_name": "B.Sc in Data Science",
+    "course_category": "Core",
+    "independent_hours": 30,
+    "assessment_hours": 15,
+    "total_notional_hours": 120,
+    "corequisites": "None",
+    "textbooks": "Bishop, C. M. (2006). Pattern Recognition and Machine Learning. Springer.\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The Elements of Statistical Learning. Springer.",
+    "reference_books": "Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning. MIT Press.\nMurphy, K. P. (2022). Probabilistic Machine Learning: An Introduction. MIT Press.\nG\u00e9ron, A. (2019). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow. O'Reilly Media.",
+    "teaching_strategy": "Instructional methods integrate interactive theory lectures with hands-on coding labs in Jupyter environments, weekly algorithmic problem-solving assignments, and a semester-long capstone predictive modeling project.",
+    "clos": [
+      {
+        "id": "ds302_clo1",
+        "code": "CLO1",
+        "description": "Demonstrate conceptual understanding of core ML paradigms (supervised, unsupervised, reinforcement).",
+        "blooms_level": "Understanding",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Lab",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "ds302_clo2",
+        "code": "CLO2",
+        "description": "Implement and configure supervised regression, classification, and ensemble algorithms in Python.",
+        "blooms_level": "Applying",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Lab",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "ds302_clo3",
+        "code": "CLO3",
+        "description": "Analyze datasets using unsupervised algorithms (K-Means clustering and PCA dimensionality reduction).",
+        "blooms_level": "Analyzing",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Lab",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "ds302_clo4",
+        "code": "CLO4",
+        "description": "Critically evaluate model performance and tune hyperparameters via cross-validation.",
+        "blooms_level": "Evaluating",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Lab",
+        "assessment_methods": "",
+        "plo_mappings": []
+      },
+      {
+        "id": "ds302_clo5",
+        "code": "CLO5",
+        "description": "Architect an end-to-end Machine Learning pipeline addressing fairness, leakage, and deployment constraints.",
+        "blooms_level": "Creating",
+        "passing_score_pct": 60.0,
+        "target_attainment_pct": 70.0,
+        "teaching_method": "Lecture & Lab",
+        "assessment_methods": "",
+        "plo_mappings": []
+      }
+    ],
+    "chapters": [
+      {
+        "id": "ds302_ch_1",
+        "chapter_number": 1,
+        "title": "Chapter 1: Foundations of Machine Learning & Learning Paradigms",
+        "content": "Supervised vs. unsupervised vs. reinforcement paradigms, inductive bias, PAC learning, bias-variance trade-off.",
+        "mapped_clos": "CLO1",
+        "teaching_methods": "Lecture, Tutorial"
+      },
+      {
+        "id": "ds302_ch_2",
+        "chapter_number": 2,
+        "title": "Chapter 2: Supervised Learning Algorithms",
+        "content": "Linear and logistic regression, Support Vector Machines (SVM), Decision Trees, Random Forests, XGBoost.",
+        "mapped_clos": "CLO2",
+        "teaching_methods": "Lecture, Lab Sessions in Python"
+      },
+      {
+        "id": "ds302_ch_3",
+        "chapter_number": 3,
+        "title": "Chapter 3: Unsupervised Learning & Dimensionality Reduction",
+        "content": "K-Means clustering, hierarchical clustering, DBSCAN, Principal Component Analysis (PCA).",
+        "mapped_clos": "CLO3",
+        "teaching_methods": "Lecture, Interactive Jupyter Labs"
+      },
+      {
+        "id": "ds302_ch_4",
+        "chapter_number": 4,
+        "title": "Chapter 4: Model Evaluation & Hyperparameter Optimization",
+        "content": "Cross-validation protocols, ROC-AUC, F1-score, confusion matrices, grid search.",
+        "mapped_clos": "CLO4",
+        "teaching_methods": "Lecture, Guided Problem Sessions"
+      },
+      {
+        "id": "ds302_ch_5",
+        "chapter_number": 5,
+        "title": "Chapter 5: Production ML Pipelines & Ethics",
+        "content": "Feature pipelines, data leakage prevention, model serving, fairness metrics, algorithmic bias.",
+        "mapped_clos": "CLO5",
+        "teaching_methods": "Lecture, Capstone Lab Project"
+      }
+    ],
+    "assessments": [
+      {
+        "id": "ds302_asm1",
+        "name": "Assignments (Coding & Theory)",
+        "assessment_type": "Assignment",
+        "total_marks": 20.0,
+        "course_weight_pct": 20.0,
+        "clo_allocations": [
+          {
+            "clo_id": "ds302_clo1",
+            "allocated_marks": 5.0
+          },
+          {
+            "clo_id": "ds302_clo2",
+            "allocated_marks": 15.0
+          }
+        ]
+      },
+      {
+        "id": "ds302_asm2",
+        "name": "Quizzes & Lab Checkpoints",
+        "assessment_type": "Quiz",
+        "total_marks": 15.0,
+        "course_weight_pct": 15.0,
+        "clo_allocations": [
+          {
+            "clo_id": "ds302_clo1",
+            "allocated_marks": 15.0
+          }
+        ]
+      },
+      {
+        "id": "ds302_asm3",
+        "name": "Midterm Examination",
+        "assessment_type": "Midterm_Exam",
+        "total_marks": 15.0,
+        "course_weight_pct": 15.0,
+        "clo_allocations": [
+          {
+            "clo_id": "ds302_clo1",
+            "allocated_marks": 5.0
+          },
+          {
+            "clo_id": "ds302_clo2",
+            "allocated_marks": 10.0
+          }
+        ]
+      },
+      {
+        "id": "ds302_asm4",
+        "name": "Comprehensive Final Examination",
+        "assessment_type": "Final_Exam",
+        "total_marks": 50.0,
+        "course_weight_pct": 50.0,
+        "clo_allocations": [
+          {
+            "clo_id": "ds302_clo3",
+            "allocated_marks": 15.0
+          },
+          {
+            "clo_id": "ds302_clo4",
+            "allocated_marks": 15.0
+          },
+          {
+            "clo_id": "ds302_clo5",
+            "allocated_marks": 20.0
+          }
+        ]
+      }
+    ]
+  }
+]

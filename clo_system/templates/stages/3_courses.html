@@ -1,0 +1,55 @@
+<!-- ======================================================== -->
+<!-- STAGE 3: CHRONOLOGICAL COURSES LIST                      -->
+<!-- ======================================================== -->
+<section id="stage-courses" class="max-w-5xl mx-auto space-y-6 hidden">
+  
+  <!-- Header and Filters -->
+  <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+    <div class="flex flex-wrap justify-between items-center gap-4">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-bold text-slate-400">
+          <button onclick="App.goToStage('departments')" class="text-blue-600 hover:underline flex items-center gap-1">
+            <span>&larr; Back to Departments</span>
+          </button>
+          <span>&bull;</span>
+          <span class="text-blue-600 uppercase tracking-wider font-extrabold">Step 3: Curriculum Timeline</span>
+        </div>
+        <h3 class="text-xl md:text-2xl font-black text-slate-900 mt-1" id="courses-stage-heading">
+          Department of Data Science Curriculum
+        </h3>
+        <p class="text-sm text-slate-500">Select any course to view full official syllabus dossier, or edit specs, chapters, CLOs, and blueprint.</p>
+      </div>
+
+      <!-- Add Course Button (Enabled only inside Department) -->
+      <button onclick="CoursesComponent.openAddModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow-sm shadow-blue-500/20">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+        <span>+ Add New Course</span>
+      </button>
+    </div>
+
+    <!-- Filter Toolbar -->
+    <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100">
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mr-1">Year:</span>
+        <button id="filter-btn-yr-ALL" onclick="CoursesComponent.setYearFilter('ALL')" class="text-xs font-bold px-3 py-1 rounded-lg bg-blue-600 text-white shadow-sm">All Years</button>
+        <button id="filter-btn-yr-Year1" onclick="CoursesComponent.setYearFilter('Year 1')" class="text-xs font-bold px-3 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Year 1</button>
+        <button id="filter-btn-yr-Year2" onclick="CoursesComponent.setYearFilter('Year 2')" class="text-xs font-bold px-3 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Year 2</button>
+        <button id="filter-btn-yr-Year3" onclick="CoursesComponent.setYearFilter('Year 3')" class="text-xs font-bold px-3 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Year 3</button>
+        <button id="filter-btn-yr-Year4" onclick="CoursesComponent.setYearFilter('Year 4')" class="text-xs font-bold px-3 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Year 4</button>
+      </div>
+
+      <div class="flex items-center gap-1.5">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mr-1">Semester:</span>
+        <button id="filter-btn-sem-ALL" onclick="CoursesComponent.setSemFilter('ALL')" class="text-xs font-bold px-3 py-1 rounded-lg bg-indigo-600 text-white shadow-sm">Both</button>
+        <button id="filter-btn-sem-SemesterI" onclick="CoursesComponent.setSemFilter('Semester I')" class="text-xs font-bold px-3 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Semester I</button>
+        <button id="filter-btn-sem-SemesterII" onclick="CoursesComponent.setSemFilter('Semester II')" class="text-xs font-bold px-3 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Semester II</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Courses Timeline Grid -->
+  <div id="courses-chronological-list" class="space-y-6">
+    <!-- Dynamically populated via CoursesComponent.render() -->
+  </div>
+</section>
+

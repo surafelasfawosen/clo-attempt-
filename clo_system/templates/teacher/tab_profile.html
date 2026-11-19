@@ -1,0 +1,250 @@
+<!-- ========================================================================= -->
+<!-- SUB-WINDOW / POP-OUT MODAL: LINKEDIN-STYLE FACULTY ACCREDITATION PROFILE    -->
+<!-- Displays "How Other People See You" + One-Click "Edit Profile" Capability   -->
+<!-- ========================================================================= -->
+<div id="t-tab-profile" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-4xl w-full max-h-[92vh] overflow-y-auto custom-scrollbar animate-scale-up space-y-5 p-6 md:p-8 my-auto">
+    
+    <!-- Top Modal Navigation & View/Edit Switcher -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 gap-3">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">Faculty Dossier</span>
+        <span class="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          ✓ Verified by DBU Academic Affairs
+        </span>
+      </div>
+
+      <!-- Mode Switcher: How Others See You (Public View) vs Edit Credentials -->
+      <div class="flex items-center gap-2">
+        <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
+          <button type="button" id="btn-profile-tab-public" onclick="TeacherPortal.setProfileTab('public')"
+            class="px-3.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold text-xs shadow-sm transition flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            <span>Public View (How Others See You)</span>
+          </button>
+          <button type="button" id="btn-profile-tab-edit" onclick="TeacherPortal.setProfileTab('edit')"
+            class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+            <span>Edit Profile</span>
+          </button>
+        </div>
+
+        <button type="button" onclick="TeacherPortal.closeProfilePopout()" class="p-2 rounded-xl border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" title="Close Profile Pop-out">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB A: PUBLIC DOSSIER VIEW (How Other People / Students See You)   -->
+    <!-- ================================================================= -->
+    <div id="profile-view-public" class="space-y-6">
+      
+      <!-- Public Hero Card -->
+      <div class="rounded-2xl border border-slate-200 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-slate-50 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-xs">
+        <div class="flex items-center gap-4">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-blue-700 via-indigo-600 to-blue-800 text-white flex items-center justify-center font-black text-xl shadow-lg ring-4 ring-white flex-shrink-0">
+            DA
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 id="public-view-fullname" class="text-xl font-black text-slate-900 tracking-tight">Dr. Adimias W (PhD)</h2>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                AI Active
+              </span>
+            </div>
+            <p id="public-view-rank" class="text-xs font-bold text-blue-800 mt-0.5">
+              Associate Professor &bull; Ph.D. in Operations Research &amp; Optimization
+            </p>
+            <p id="public-view-affiliation" class="text-xs text-slate-500 mt-0.5">
+              Department of Data Science &bull; College of Computing &bull; Addis Ababa University Alumnus
+            </p>
+          </div>
+        </div>
+
+        <button type="button" onclick="TeacherPortal.setProfileTab('edit')" class="self-start sm:self-auto px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+          <span>Edit My Credentials</span>
+        </button>
+      </div>
+
+      <!-- Academic Background & Workload Summary -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Teaching Experience</span>
+          <strong id="public-view-exp" class="text-slate-800 font-bold text-sm block mt-0.5">15 Years</strong>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Max Course Load</span>
+          <strong id="public-view-load" class="text-blue-700 font-bold text-sm block mt-0.5">12 Credit Hrs</strong>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Accreditation Seals</span>
+          <strong class="text-emerald-700 font-bold text-sm block mt-0.5">3 Verified Licenses</strong>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Research Papers</span>
+          <strong class="text-purple-700 font-bold text-sm block mt-0.5">2 Published</strong>
+        </div>
+      </div>
+
+      <!-- Core Competencies Tags -->
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Core Competencies &amp; Research Domains (AI Vector Mapped):</h4>
+        <div id="public-view-specializations-tags" class="flex flex-wrap gap-2 text-xs">
+          <!-- Rendered dynamically -->
+          <span class="bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-lg font-semibold">Operations Research</span>
+          <span class="bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-lg font-semibold">Linear Programming</span>
+          <span class="bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-lg font-semibold">Simplex Method</span>
+          <span class="bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-lg font-semibold">Optimization Algorithms</span>
+          <span class="bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-lg font-semibold">Queuing Theory</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB B: EDIT CREDENTIALS FORM (Click to Edit each property)         -->
+    <!-- ================================================================= -->
+    <div id="profile-view-edit" class="space-y-6 hidden">
+      <div class="bg-slate-50/70 p-5 rounded-2xl border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-2">
+            <span>🎓 Edit Academic Credentials &amp; Faculty Rank</span>
+          </h3>
+          <span class="text-[11px] text-slate-500">Edit fields and click Save Changes below</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Full Name (with Academic Degree)</label>
+            <input type="text" id="tp-fullname" class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white" value="Dr. Adimias W (PhD)">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Academic Rank</label>
+            <select id="tp-rank" class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+              <option value="Professor">Full Professor</option>
+              <option value="Associate Professor" selected>Associate Professor</option>
+              <option value="Assistant Professor">Assistant Professor</option>
+              <option value="Senior Lecturer">Senior Lecturer</option>
+              <option value="Lecturer">Lecturer</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Highest Conferred Degree</label>
+            <input type="text" id="tp-degree" class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300 bg-white" value="Ph.D. in Operations Research & Optimization">
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Alma Mater / Conferring Institution</label>
+            <input type="text" id="tp-almamater" class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300 bg-white" value="Addis Ababa University">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">College Affiliation</label>
+            <select id="tp-college" onchange="TeacherPortal.onProfileCollegeChange(this.value)" class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300 bg-white">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Department Affiliation</label>
+            <select id="tp-dept" class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300 bg-white">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Years Experience</label>
+              <input type="number" id="tp-experience" class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300 bg-white text-center" value="15">
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Max Teaching Load</label>
+              <input type="number" id="tp-maxload" class="w-full font-semibold px-3 py-2 rounded-xl border border-slate-300 bg-white text-center" value="12">
+            </div>
+          </div>
+
+          <div class="md:col-span-2">
+            <label class="block font-bold text-slate-700 mb-1">Core Competencies &amp; Specializations (Feeds AI Staffing Engine)</label>
+            <input type="text" id="tp-specializations" class="w-full font-mono font-semibold px-3 py-2 rounded-xl border border-slate-300 bg-white text-slate-800" value="Operations Research, Linear Programming, Simplex Method, Optimization Algorithms, Queuing Theory, Transportation Problem, Mathematical Modeling">
+            <span class="text-[11px] text-slate-400">Comma-separated keywords matched against course learning outcome requirements.</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
+          <button type="button" onclick="TeacherPortal.setProfileTab('public')" class="px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs transition">
+            Cancel
+          </button>
+          <button type="button" onclick="TeacherPortal.saveProfile(); TeacherPortal.setProfileTab('public');" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span>Save Profile Changes</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 2: ACCREDITATION CERTIFICATES & LICENSES                   -->
+    <!-- ================================================================= -->
+    <div class="space-y-3 pt-3 border-t border-slate-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-2">
+            <span>📜 Accreditation Certificates &amp; Professional Licenses</span>
+          </h3>
+          <p class="text-xs text-slate-500">Official certificates audited by DBU Academic Commission &amp; Ministry of Education.</p>
+        </div>
+        <button type="button" onclick="TeacherPortal.openSubmitCertificateModal()"
+          class="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+          <span>Submit New Certificate</span>
+        </button>
+      </div>
+
+      <!-- Certificates List Container (Dynamically populated) -->
+      <div id="tp-certificates-list" class="space-y-3">
+        <!-- Rendered via TeacherPortal.renderCertificatesList() -->
+      </div>
+
+      <!-- Legacy field kept for backward compatibility and test sync -->
+      <input type="hidden" id="tp-certifications" value="Certified Operations Research Analyst (CORA), INFORMS Member">
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 3: SCHOLARLY PUBLICATIONS & RESEARCH                       -->
+    <!-- ================================================================= -->
+    <div class="space-y-3 pt-3 border-t border-slate-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-2">
+            <span>🔬 Scholarly Publications &amp; Peer-Reviewed Research</span>
+          </h3>
+          <p class="text-xs text-slate-500">Published papers indexing faculty research domains into the university neural matching vector.</p>
+        </div>
+        <button type="button" onclick="TeacherPortal.openAddPublicationModal()"
+          class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-200 transition flex items-center gap-1">
+          <span>+ Add Paper</span>
+        </button>
+      </div>
+
+      <div id="tp-publications-list" class="space-y-2.5">
+        <!-- Rendered via TeacherPortal.renderPublicationsList() -->
+      </div>
+
+      <!-- Legacy fields kept for backward compatibility and test sync -->
+      <textarea id="tp-publications" class="hidden">1. Dual Simplex Approaches for Multi-commodity Networks (Journal of Optimization, 2022)&#10;2. Dynamic Queuing Models for Healthcare Facility Routing (IEEE Access, 2024)</textarea>
+      <textarea id="tp-projects" class="hidden">National Agricultural Freight Scheduling Optimization System (DBU-MoA Grant, 2023-2025)</textarea>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="flex items-center justify-between pt-3 border-t border-slate-200 text-xs text-slate-500">
+      <span>DBU Faculty Accreditation &bull; Changes auto-sync with Course Staffing AI</span>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="TeacherPortal.closeProfilePopout()" class="px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs transition">
+          Close Window
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
